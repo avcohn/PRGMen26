@@ -1,280 +1,486 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="he" dir="rtl">
+
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#0a0a0a">
-<meta name="description" content="הגברים של מרינה – טיול לפראג, 30.10–01.11.2026">
-<title>הגברים של מרינה – פראג 2026</title>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>הגברים של מרינה | Prague 2026</title>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700;900&display=swap" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
+
 <style>
-  :root{
-    --gold:#d4af37;
-    --gold-dim:#ba8d17;
-    --bg:#0a0a0a;
-    --panel:#141414;
-    --panel-2:#171717;
-    --border:#2b2b2b;
-    --text:#f5f5f5;
-    --muted:#a3a3a3;
-    --radius:18px;
-    --safe-top:env(safe-area-inset-top,0px);
-    --safe-bottom:env(safe-area-inset-bottom,0px);
-  }
-  *{box-sizing:border-box}
-  html{scroll-behavior:smooth}
-  html,body{overflow-x:hidden;max-width:100%}
-  body{
-    margin:0;
-    font-family:'Heebo',sans-serif;
-    background:var(--bg);
-    color:var(--text);
-    -webkit-tap-highlight-color:transparent;
-  }
-  a{color:inherit}
-  img,svg{max-width:100%;display:block}
 
-  /* Skip link for keyboard/screen-reader users */
-  .skip-link{
-    position:absolute;top:-100px;right:12px;background:var(--gold);color:#111;
-    padding:10px 16px;border-radius:10px;z-index:20;font-weight:700;transition:top .2s ease;
-  }
-  .skip-link:focus{top:12px}
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
 
-  nav{
-    position:sticky;top:0;
-    background:rgba(10,10,10,.85);
-    backdrop-filter:blur(10px);
-    -webkit-backdrop-filter:blur(10px);
-    padding:calc(10px + var(--safe-top)) 12px 10px;
-    display:flex;justify-content:center;gap:6px;
-    z-index:10;
-    border-bottom:1px solid rgba(255,255,255,.06);
-  }
-  nav a{
-    text-decoration:none;font-weight:500;font-size:.95rem;
-    padding:10px 16px;border-radius:999px;
-    min-height:44px;display:flex;align-items:center;
-    transition:background .2s ease,color .2s ease;
-    white-space:nowrap;
-  }
-  nav a:hover,nav a:focus-visible{background:rgba(212,175,55,.12)}
-  nav a.active{background:var(--gold);color:#111;font-weight:700}
+html{
+scroll-behavior:smooth;
+}
 
-  .hero{
-    min-height:85svh;
-    min-height:85vh;
-    background:
-      linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.85)),
-      url('https://images.unsplash.com/photo-1541849546-216549ae216d?auto=format&fit=crop&w=1800&q=80') center/cover;
-    display:grid;place-items:center;text-align:center;
-    padding:32px 20px;
-  }
-  .hero-emoji{font-size:clamp(2.6rem,10vw,3.8rem);line-height:1}
-  .hero h2{margin:10px 0 0;font-weight:500;color:var(--muted);font-size:clamp(1rem,3.6vw,1.3rem);letter-spacing:.02em}
-  .hero h1{
-    margin:6px 0 0;color:var(--gold);
-    font-size:clamp(2.4rem,11vw,5rem);
-    font-weight:900;letter-spacing:.01em;
-    line-height:1.05;
-  }
-  .hero p{margin:14px 0 0;color:var(--muted);font-size:clamp(.95rem,3vw,1.1rem)}
-  #count{
-    display:inline-block;margin-top:16px;padding:10px 18px;
-    border:1px solid var(--gold);border-radius:999px;
-    font-size:clamp(.85rem,2.6vw,1rem);
-    max-width:100%;
-  }
+body{
 
-  .wrap{max-width:1150px;margin:auto;padding:24px 16px 8px}
+font-family:'Heebo',sans-serif;
 
-  .card{
-    background:rgba(255,255,255,.05);
-    border:1px solid var(--border);
-    border-radius:var(--radius);
-    padding:20px;margin:18px 0;
-    backdrop-filter:blur(8px);
-    -webkit-backdrop-filter:blur(8px);
-  }
-  .hotel{border-right:6px solid var(--gold)}
-  .hotel h2{margin-top:0}
-  .hotel p{color:var(--muted);line-height:1.6;margin-bottom:0}
+background:#F7F5F0;
 
-  h2.section-title{font-size:clamp(1.3rem,4.5vw,1.6rem);margin:32px 0 16px}
+color:#1D2A44;
 
-  .timeline{list-style:none;margin:0;padding:0}
-  .stop{
-    position:relative;
-    background:var(--panel-2);
-    border:1px solid var(--border);
-    border-radius:16px;
-    padding:18px 44px 18px 18px;
-    margin:0 0 16px;
-  }
-  .stop::before{
-    content:'';position:absolute;top:0;bottom:-16px;right:20px;
-    width:2px;background:linear-gradient(var(--gold),transparent);
-  }
-  .stop:last-child::before{display:none}
-  .stop::after{
-    content:'';position:absolute;top:24px;right:14px;
-    width:14px;height:14px;border-radius:50%;
-    background:var(--gold);box-shadow:0 0 0 4px rgba(212,175,55,.18);
-  }
-  .stop h3{margin:0 0 10px;font-size:1.05rem}
-  .route{display:flex;flex-wrap:wrap;gap:8px}
-  .route span{background:#232323;padding:7px 12px;border-radius:999px;font-size:.9rem}
+overflow-x:hidden;
 
-  .people{display:grid;grid-template-columns:repeat(auto-fit,minmax(100px,1fr));gap:12px}
-  .person{
-    background:var(--panel-2);border:1px solid var(--border);border-radius:16px;
-    padding:16px 8px;text-align:center;font-size:.95rem;
-    transition:transform .15s ease,border-color .15s ease;
-  }
-  .person:hover{transform:translateY(-2px);border-color:var(--gold)}
-  .person .emoji{font-size:1.4rem;display:block;margin-bottom:6px}
+}
 
-  .board{
-    background:linear-gradient(135deg,var(--gold),var(--gold-dim));
-    color:#151107;border-radius:20px;padding:22px;margin-top:28px;
-  }
-  .board h2{margin-top:0}
-  .board dl{margin:0;display:grid;gap:8px}
-  .board dl div{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
-    border-bottom:1px solid rgba(0,0,0,.15);padding-bottom:8px}
-  .board dl div:last-child{border-bottom:none;padding-bottom:0}
-  .board dt{font-weight:700}
-  .board dd{margin:0;text-align:left}
+a{
+text-decoration:none;
+color:inherit;
+}
 
-  footer{text-align:center;padding:36px 16px calc(36px + var(--safe-bottom));color:var(--muted)}
-  footer p:first-child{color:var(--text);font-weight:700}
+img{
+display:block;
+max-width:100%;
+}
 
-  @media (max-width:400px){
-    .stop{padding-right:38px}
-    .stop::after{right:12px;width:12px;height:12px;top:22px}
-  }
+:root{
 
-  @media (prefers-reduced-motion:reduce){
-    html{scroll-behavior:auto}
-    .person{transition:none}
-  }
+--navy:#173B6C;
+
+--gold:#D5A740;
+
+--cream:#F7F5F0;
+
+--card:#FFFFFF;
+
+--text:#23344E;
+
+--muted:#6C7789;
+
+--shadow:0 20px 60px rgba(0,0,0,.08);
+
+--radius:28px;
+
+}
+
+nav{
+
+position:fixed;
+
+top:0;
+
+left:0;
+
+right:0;
+
+height:72px;
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+padding:0 28px;
+
+z-index:100;
+
+transition:.35s;
+
+}
+
+nav.scrolled{
+
+background:rgba(255,255,255,.92);
+
+backdrop-filter:blur(12px);
+
+box-shadow:0 5px 25px rgba(0,0,0,.08);
+
+}
+
+.logo{
+
+font-size:1.2rem;
+
+font-weight:800;
+
+color:white;
+
+}
+
+nav.scrolled .logo{
+
+color:var(--navy);
+
+}
+
+.menu{
+
+display:flex;
+
+gap:20px;
+
+}
+
+.menu a{
+
+font-weight:600;
+
+color:white;
+
+}
+
+nav.scrolled .menu a{
+
+color:var(--navy);
+
+}
+
+.hero{
+
+height:100vh;
+
+background:
+
+linear-gradient(rgba(0,0,0,.35),rgba(0,0,0,.55)),
+
+url("https://images.unsplash.com/photo-1541849546-216549ae216d?auto=format&fit=crop&w=2200&q=90");
+
+background-size:cover;
+
+background-position:center;
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+text-align:center;
+
+padding:20px;
+
+}
+
+.hero-content{
+
+color:white;
+
+max-width:800px;
+
+}
+
+.hero h2{
+
+font-size:1.2rem;
+
+letter-spacing:3px;
+
+margin-bottom:20px;
+
+opacity:.9;
+
+}
+
+.hero h1{
+
+font-size:clamp(3rem,8vw,6rem);
+
+font-weight:900;
+
+line-height:1;
+
+margin-bottom:20px;
+
+}
+
+.hero p{
+
+font-size:1.2rem;
+
+opacity:.95;
+
+margin-bottom:40px;
+
+}
+
+.countdown{
+
+display:flex;
+
+justify-content:center;
+
+gap:15px;
+
+flex-wrap:wrap;
+
+}
+
+.box{
+
+width:95px;
+
+height:95px;
+
+background:rgba(255,255,255,.18);
+
+backdrop-filter:blur(12px);
+
+border-radius:22px;
+
+display:flex;
+
+flex-direction:column;
+
+justify-content:center;
+
+}
+
+.box span:first-child{
+
+font-size:2rem;
+
+font-weight:800;
+
+}
+
+.box span:last-child{
+
+font-size:.9rem;
+
+opacity:.8;
+
+}
+
+.scroll{
+
+margin-top:45px;
+
+display:inline-flex;
+
+padding:15px 26px;
+
+background:white;
+
+color:var(--navy);
+
+border-radius:999px;
+
+font-weight:700;
+
+}
+
+main{
+
+max-width:1200px;
+
+margin:auto;
+
+padding:80px 20px;
+
+}
+
+.placeholder{
+
+background:white;
+
+border-radius:var(--radius);
+
+box-shadow:var(--shadow);
+
+padding:60px;
+
+text-align:center;
+
+}
+
+.placeholder h2{
+
+font-size:2rem;
+
+margin-bottom:15px;
+
+color:var(--navy);
+
+}
+
+.placeholder p{
+
+color:var(--muted);
+
+line-height:1.8;
+
+}
+
+@media(max-width:700px){
+
+.menu{
+
+display:none;
+
+}
+
+.hero p{
+
+font-size:1rem;
+
+}
+
+.box{
+
+width:80px;
+
+height:80px;
+
+}
+
+}
+
 </style>
-</head>
-<body>
-<a class="skip-link" href="#main">דלג לתוכן</a>
 
-<nav aria-label="ניווט ראשי">
-  <a href="#trip">מסלול</a>
-  <a href="#hotel">מלון</a>
-  <a href="#people">משתתפים</a>
+</head>
+
+<body>
+
+<nav id="nav">
+
+<div class="logo">
+
+🍺 הגברים של מרינה
+
+</div>
+
+<div class="menu">
+
+<a href="#">מלון</a>
+
+<a href="#">מסלול</a>
+
+<a href="#">פראג</a>
+
+</div>
+
 </nav>
 
-<header class="hero">
-  <div>
-    <div class="hero-emoji" aria-hidden="true">🍺</div>
-    <h2>הגברים של מרינה</h2>
-    <h1>PRAGUE 2026</h1>
-    <p>30.10–01.11.2026</p>
-    <div id="count" role="status" aria-live="polite"></div>
-  </div>
-</header>
+<section class="hero">
 
-<main id="main" class="wrap">
+<div class="hero-content">
 
-  <section id="hotel" class="card hotel" aria-labelledby="hotel-title">
-    <h2 id="hotel-title">🏨 Hilton Prague Old Town</h2>
-    <p>מלון הטיול. מיקום מרכזי במרחק הליכה מהעיר העתיקה, הרובע היהודי, אזורי הקניות וחיי הלילה.</p>
-  </section>
+<h2>
 
-  <h2 id="trip" class="section-title">🚇 מסלול הטיול</h2>
-  <ol class="timeline">
+WHAT HAPPENS IN PRAGUE...
 
-    <li class="stop">
-      <h3>📅 שישי | 30.10</h3>
-      <div class="route">
-        <span>10:00 מרכז פראג</span><span>🏛️ העיר העתיקה</span><span>🕰️ השעון האסטרונומי</span><span>🍽️ צהריים</span><span>✡️ הרובע היהודי</span><span>🏨 Hilton Old Town</span><span>🥩 סטייקייה</span><span>🎰 קזינו</span>
-      </div>
-    </li>
+</h2>
 
-    <li class="stop">
-      <h3>📅 שבת | 31.10</h3>
-      <div class="route">
-        <span>🍳 ארוחת בוקר</span><span>🛍️ קניות</span><span>🌮 שוק השבת</span><span>😴 מנוחה</span><span>🍽️ ארוחת ערב</span><span>🎉 LEVELS</span>
-      </div>
-    </li>
+<h1>
 
-    <li class="stop">
-      <h3>📅 ראשון | 1.11</h3>
-      <div class="route">
-        <span>🍳 ארוחת בוקר</span><span>🧳 צ'ק־אאוט</span><span>❓ בקרוב...</span><span>🍺 בירה אחרונה</span><span>🧳 איסוף מזוודות</span><span>✈️ יציאה לשדה 19:00</span>
-      </div>
-    </li>
+PRAGUE 2026
 
-  </ol>
+</h1>
 
-  <h2 id="people" class="section-title">👥 המשתתפים</h2>
-  <div class="people">
-    <div class="person"><span class="emoji" aria-hidden="true">🍺</span>יאיר</div>
-    <div class="person"><span class="emoji" aria-hidden="true">🍺</span>גילי</div>
-    <div class="person"><span class="emoji" aria-hidden="true">🍺</span>מאור</div>
-    <div class="person"><span class="emoji" aria-hidden="true">🍺</span>אבירם</div>
-    <div class="person"><span class="emoji" aria-hidden="true">🍺</span>אבי ד.</div>
-    <div class="person"><span class="emoji" aria-hidden="true">🍺</span>אבי כ.</div>
-  </div>
+<p>
 
-  <section class="board" aria-labelledby="board-title">
-    <h2 id="board-title">✈️ Boarding Pass</h2>
-    <dl>
-      <div><dt>Hotel</dt><dd>Hilton Prague Old Town</dd></div>
-      <div><dt>Departure</dt><dd>Prague City Center</dd></div>
-      <div><dt>Airport Arrival</dt><dd>01.11 בשעה 19:00</dd></div>
-      <div><dt>Status</dt><dd>🍺 Ready for Takeoff</dd></div>
-    </dl>
-  </section>
+30.10–01.11.2026
 
-  <footer>
-    <p>What happens in Prague... stays in Prague.</p>
-    <p>Marina's Boys • Prague 2026</p>
-  </footer>
+</p>
+
+<div class="countdown">
+
+<div class="box">
+
+<span id="days">0</span>
+
+<span>ימים</span>
+
+</div>
+
+<div class="box">
+
+<span id="hours">0</span>
+
+<span>שעות</span>
+
+</div>
+
+<div class="box">
+
+<span id="minutes">0</span>
+
+<span>דקות</span>
+
+</div>
+
+</div>
+
+<a class="scroll" href="#content">
+
+התחל את המסע ↓
+
+</a>
+
+</div>
+
+</section>
+
+<main id="content">
+
+<div class="placeholder">
+
+<h2>
+
+פראג מחכה לנו 🇨🇿
+
+</h2>
+
+<p>
+
+זהו בסיס האתר החדש.
+
+בשלב הבא ייכנס כאן כרטיס המלון היוקרתי ולאחריו כרטיסי הימים.
+
+</p>
+
+</div>
+
 </main>
 
 <script>
-(function(){
-  "use strict";
 
-  // Countdown
-  var target = new Date("2026-10-30T10:00:00");
-  var countEl = document.getElementById("count");
-  function updateCount(){
-    var diff = target - new Date();
-    if (diff < 0){ countEl.textContent = "הטיול התחיל! 🍺"; return; }
-    var days = Math.floor(diff / 86400000);
-    var hours = Math.floor((diff % 86400000) / 3600000);
-    var mins = Math.floor((diff % 3600000) / 60000);
-    countEl.textContent = "⏳ " + days + " ימים • " + hours + " שעות • " + mins + " דקות";
-  }
-  updateCount();
-  setInterval(updateCount, 60000);
+const target=new Date("2026-10-30T10:00:00");
 
-  // Scroll-spy for nav active state
-  var sections = ["trip","hotel","people"].map(function(id){ return document.getElementById(id); });
-  var navLinks = Array.prototype.slice.call(document.querySelectorAll("nav a"));
-  if ("IntersectionObserver" in window){
-    var observer = new IntersectionObserver(function(entries){
-      entries.forEach(function(entry){
-        if (entry.isIntersecting){
-          navLinks.forEach(function(link){
-            link.classList.toggle("active", link.getAttribute("href") === "#" + entry.target.id);
-          });
-        }
-      });
-    }, { rootMargin: "-45% 0px -50% 0px" });
-    sections.forEach(function(s){ if (s) observer.observe(s); });
-  }
-})();
+function update(){
+
+const now=new Date();
+
+const diff=target-now;
+
+if(diff<0)return;
+
+document.getElementById("days").textContent=Math.floor(diff/86400000);
+
+document.getElementById("hours").textContent=Math.floor(diff%86400000/3600000);
+
+document.getElementById("minutes").textContent=Math.floor(diff%3600000/60000);
+
+}
+
+update();
+
+setInterval(update,60000);
+
+window.addEventListener("scroll",()=>{
+
+document.getElementById("nav").classList.toggle("scrolled",window.scrollY>40);
+
+});
+
 </script>
-</body>
-</html>
 
+</body>
+
+</html>
