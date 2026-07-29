@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#fff8ee" />
+  <meta name="description" content="הגברים של מרינה – פראג 2026" />
+  <title>הגברים של מרינה | פראג 2026</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@500;700;900&family=Heebo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --cream:#fff8ee;
+      --cream-2:#f8ead6;
+      --paper:#fffdf8;
+      --mahogany:#6f321f;
+      --mahogany-2:#8b4a2a;
+      --amber:#d98a1e;
+      --amber-2:#f1ad3b;
+      --gold:#c78f2c;
+      --gold-soft:#e8c27c;
+      --ink:#3b2118;
+      --muted:#7c6255;
+      --line:rgba(111,50,31,.18);
+      --shadow:0 18px 50px rgba(83,46,25,.12);
+      --shadow-lg:0 30px 80px rgba(83,46,25,.2);
+      --radius:28px;
+      --ease:cubic-bezier(.2,.8,.2,1);
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:"Heebo",sans-serif;
+      color:var(--ink);
+      background:
+        radial-gradient(circle at 15% 10%, rgba(241,173,59,.12), transparent 28%),
+        radial-gradient(circle at 85% 20%, rgba(199,143,44,.12), transparent 30%),
+        linear-gradient(180deg,var(--cream),#fffaf3 55%,var(--cream-2));
+      min-height:100vh;
+      overflow-x:hidden;
+    }
+
+    body::before{
+      content:"";
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      opacity:.22;
+      background-image:radial-gradient(circle at 1px 1px, rgba(111,50,31,.18) 1px, transparent 0);
+      background-size:24px 24px;
+      z-index:-1;
+    }
+
+    img{max-width:100%;display:block}
+    a{text-decoration:none;color:inherit}
+    button{font:inherit}
+
+    .progress{
+      position:fixed;
+      top:0;right:0;left:0;
+      height:4px;
+      z-index:1000;
+      background:transparent;
+    }
+    .progress span{
+      display:block;
+      height:100%;
+      width:0;
+      background:linear-gradient(90deg,var(--mahogany),var(--amber-2),var(--gold));
+      box-shadow:0 0 12px rgba(217,138,30,.5);
+    }
+
+    .hero{
+      min-height:100svh;
+      display:grid;
+      place-items:center;
+      position:relative;
+      padding:48px 20px 80px;
+      overflow:hidden;
+      isolation:isolate;
+    }
+    .hero::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        linear-gradient(180deg,rgba(255,248,238,.1),rgba(255,248,238,.86) 78%,var(--cream)),
+        url("1.jpg") center/cover no-repeat;
+      filter:saturate(.85) sepia(.08);
+      z-index:-3;
+    }
+    .hero::after{
+      content:"";
+      position:absolute;
+      inset:auto -10% -1px;
+      height:32%;
+      background:linear-gradient(180deg,transparent,var(--cream));
+      z-index:-2;
+    }
+    .hero-glow{
+      position:absolute;
+      inset:15% 20% auto;
+      height:50%;
+      background:radial-gradient(circle,rgba(255,225,168,.82),rgba(255,225,168,.24) 40%,transparent 72%);
+      filter:blur(30px);
+      z-index:-1;
+    }
+    .hero-inner{
+      width:min(1120px,100%);
+      text-align:center;
+    }
+    .hero-logo{
+      width:min(1080px,94vw);
+      max-height:68vh;
+      object-fit:contain;
+      display:block;
+      margin:0 auto 24px;
+      filter:drop-shadow(0 24px 30px rgba(93,47,22,.22));
+      animation:float 5.4s ease-in-out infinite;
+    }
+    @keyframes float{
+      0%,100%{transform:translateY(0)}
+      50%{transform:translateY(-10px)}
+    }
+    .hero-meta{
+      width:min(900px,100%);
+      margin:24px auto 0;
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:12px;
+      padding:14px;
+      border-radius:24px;
+      background:rgba(255,253,248,.8);
+      border:1px solid rgba(255,255,255,.8);
+      box-shadow:var(--shadow);
+      backdrop-filter:blur(15px);
+    }
+    .meta-item{
+      padding:14px 8px;
+      border-left:1px solid var(--line);
+    }
+    .meta-item:last-child{border-left:0}
+    .meta-item b{
+      display:block;
+      font-size:1.05rem;
+      color:var(--mahogany);
+      margin-top:3px;
+    }
+    .meta-item span{
+      color:var(--muted);
+      font-size:.86rem;
+    }
+    .hero-actions{
+      margin-top:26px;
+      display:flex;
+      justify-content:center;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:9px;
+      min-height:52px;
+      padding:0 26px;
+      border-radius:999px;
+      font-weight:800;
+      transition:.25s var(--ease);
+      border:1px solid transparent;
+    }
+    .btn-primary{
+      color:#fff;
+      background:linear-gradient(135deg,var(--mahogany),var(--amber));
+      box-shadow:0 14px 28px rgba(111,50,31,.28);
+    }
+    .btn-primary:hover{transform:translateY(-3px);box-shadow:0 18px 38px rgba(111,50,31,.34)}
+    .btn-soft{
+      background:rgba(255,253,248,.84);
+      border-color:var(--line);
+      color:var(--mahogany);
+    }
+    .btn-soft:hover{background:#fff;transform:translateY(-2px)}
+
+    .countdown-wrap{
+      width:min(900px,100%);
+      margin:34px auto 0;
+    }
+    .eyebrow{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      color:var(--mahogany-2);
+      font-weight:800;
+      letter-spacing:.04em;
+    }
+    .eyebrow::before,.eyebrow::after{
+      content:"";
+      width:34px;height:1px;background:var(--gold);
+    }
+    .countdown{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:12px;
+      margin-top:14px;
+      direction:ltr;
+    }
+    .count-box{
+      padding:16px 10px;
+      border-radius:20px;
+      background:rgba(255,253,248,.78);
+      border:1px solid rgba(255,255,255,.86);
+      box-shadow:0 12px 28px rgba(83,46,25,.08);
+    }
+    .count-box strong{
+      display:block;
+      font:900 clamp(1.6rem,4vw,2.6rem)/1 "Frank Ruhl Libre",serif;
+      color:var(--mahogany);
+    }
+    .count-box span{font-size:.8rem;color:var(--muted)}
+
+    main{
+      width:min(1180px,calc(100% - 32px));
+      margin:0 auto;
+      padding:70px 0 100px;
+    }
+    .section-head{
+      text-align:center;
+      margin-bottom:34px;
+    }
+    .section-head h2{
+      margin:8px 0 6px;
+      font:900 clamp(2rem,5vw,3.5rem)/1.1 "Frank Ruhl Libre",serif;
+      color:var(--mahogany);
+    }
+    .section-head p{
+      color:var(--muted);
+      margin:0 auto;
+      max-width:650px;
+    }
+
+    .days-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:22px;
+    }
+    .day-card{
+      background:rgba(255,253,248,.92);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      overflow:hidden;
+      box-shadow:var(--shadow);
+      transition:.35s var(--ease);
+      position:relative;
+    }
+    .day-card:hover{
+      transform:translateY(-10px);
+      box-shadow:var(--shadow-lg);
+    }
+    .day-media{
+      height:300px;
+      position:relative;
+      overflow:hidden;
+    }
+    .day-media img{
+      width:100%;height:100%;
+      object-fit:cover;
+      transition:.7s var(--ease);
+    }
+    .day-card:hover .day-media img{transform:scale(1.06)}
+    .day-media::after{
+      content:"";
+      position:absolute;inset:0;
+      background:linear-gradient(180deg,transparent 30%,rgba(66,31,18,.86));
+    }
+    .day-label{
+      position:absolute;
+      top:16px;right:16px;
+      z-index:2;
+      background:linear-gradient(135deg,var(--amber),var(--amber-2));
+      color:#fff;
+      padding:8px 13px;
+      border-radius:999px;
+      font-weight:800;
+      box-shadow:0 8px 18px rgba(84,45,22,.24);
+    }
+    .day-title{
+      position:absolute;
+      right:22px;left:22px;bottom:20px;
+      z-index:2;
+      color:#fff;
+    }
+    .day-title h3{
+      margin:0 0 4px;
+      font:800 1.55rem/1.2 "Frank Ruhl Libre",serif;
+    }
+    .day-title p{margin:0;opacity:.88}
+    .day-body{padding:24px}
+    .timeline{
+      display:grid;
+      gap:12px;
+      position:relative;
+    }
+    .timeline::before{
+      content:"";
+      position:absolute;
+      top:14px;bottom:14px;right:15px;
+      width:2px;
+      background:linear-gradient(var(--gold-soft),rgba(199,143,44,.08));
+    }
+    .step{
+      display:grid;
+      grid-template-columns:32px 1fr;
+      gap:12px;
+      align-items:start;
+      position:relative;
+    }
+    .step i{
+      width:30px;height:30px;
+      display:grid;place-items:center;
+      border-radius:50%;
+      font-style:normal;
+      font-size:.9rem;
+      background:linear-gradient(145deg,#fff2cd,#e7a33a);
+      color:var(--mahogany);
+      border:1px solid rgba(111,50,31,.14);
+      z-index:1;
+    }
+    .step span{
+      padding-top:4px;
+      color:#53362a;
+      line-height:1.4;
+    }
+
+    .trip-info{
+      margin-top:60px;
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:18px;
+    }
+    .info-card{
+      padding:24px;
+      border-radius:24px;
+      background:linear-gradient(145deg,rgba(255,253,248,.96),rgba(248,234,214,.82));
+      border:1px solid var(--line);
+      box-shadow:var(--shadow);
+      display:flex;
+      gap:15px;
+      align-items:center;
+    }
+    .info-icon{
+      width:52px;height:52px;
+      border-radius:18px;
+      display:grid;place-items:center;
+      background:linear-gradient(145deg,#ffe9b8,#e39a2e);
+      font-size:1.45rem;
+      flex:none;
+    }
+    .info-card small{display:block;color:var(--muted)}
+    .info-card b{color:var(--mahogany);font-size:1.05rem}
+
+    .cta{
+      margin-top:60px;
+      padding:38px;
+      border-radius:32px;
+      text-align:center;
+      color:#fff;
+      background:
+        radial-gradient(circle at 10% 20%,rgba(255,201,103,.24),transparent 28%),
+        linear-gradient(135deg,var(--mahogany),#8f4e27 55%,var(--amber));
+      box-shadow:var(--shadow-lg);
+      position:relative;
+      overflow:hidden;
+    }
+    .cta h2{
+      margin:0 0 10px;
+      font:900 clamp(2rem,5vw,3.2rem)/1.1 "Frank Ruhl Libre",serif;
+    }
+    .cta p{margin:0 0 22px;color:rgba(255,255,255,.82)}
+
+    footer{
+      padding:34px 20px 46px;
+      text-align:center;
+      color:var(--mahogany);
+    }
+    footer strong{
+      display:block;
+      font-family:"Frank Ruhl Libre",serif;
+      font-size:1.2rem;
+    }
+    footer span{color:var(--muted);font-size:.9rem}
+
+    .to-top{
+      position:fixed;
+      left:18px;bottom:18px;
+      width:48px;height:48px;
+      border:0;
+      border-radius:50%;
+      display:grid;place-items:center;
+      background:linear-gradient(135deg,var(--mahogany),var(--amber));
+      color:#fff;
+      box-shadow:0 12px 28px rgba(111,50,31,.28);
+      cursor:pointer;
+      opacity:0;
+      transform:translateY(12px);
+      pointer-events:none;
+      transition:.25s var(--ease);
+      z-index:990;
+    }
+    .to-top.show{opacity:1;transform:none;pointer-events:auto}
+
+    .reveal{
+      opacity:0;
+      transform:translateY(28px);
+      transition:.75s var(--ease);
+    }
+    .reveal.in{opacity:1;transform:none}
+
+    @media (max-width:900px){
+
+    @media (max-width:640px){
+      .hero{padding:28px 14px 60px}
+      .hero::before{background-position:center top}
+      .hero-logo{
+        width:min(760px,100%);
+        max-height:52vh;
+        margin:0 auto 18px;
+      }
+      .hero-meta{grid-template-columns:1fr 1fr;padding:10px}
+      .meta-item{padding:11px 6px}
+      .countdown{gap:8px}
+      .count-box{padding:14px 6px;border-radius:16px}
+      main{width:min(100% - 22px,1180px);padding-top:46px}
+      .day-card{display:block}
+      .day-media{height:265px;min-height:0}
+      .day-body{padding:20px}
+      .trip-info{margin-top:40px}
+      .cta{padding:30px 18px;border-radius:26px}
+      .btn{width:100%}
+      .hero-actions{display:grid}
+    }
+
+    @media (prefers-reduced-motion:reduce){
+      *,*::before,*::after{animation:none!important;transition:none!important}
+      html{scroll-behavior:auto}
+    }
+  </style>
+</head>
+<body>
+
+<div class="progress" aria-hidden="true"><span id="progressBar"></span></div>
+<header class="hero" id="top">
+  <div class="hero-glow" aria-hidden="true"></div>
+  <div class="hero-inner">
+    <img class="hero-logo" src="logo2.png" alt="הגברים של מרינה - פראג 2026">
+
+    <div class="hero-meta reveal">
+      <div class="meta-item"><span>📍 יעד</span><b>פראג, צ'כיה</b></div>
+      <div class="meta-item"><span>🏨 מלון</span><b>Hilton Old Town</b></div>
+      <div class="meta-item"><span>📅 תאריכים</span><b>30.10–01.11</b></div>
+      
+    </div>
+
+    <div class="countdown-wrap reveal">
+      <div class="eyebrow">הטיול מתחיל בעוד</div>
+      <div class="countdown" aria-label="ספירה לאחור">
+        <div class="count-box"><strong id="days">0</strong><span>ימים</span></div>
+        <div class="count-box"><strong id="hours">0</strong><span>שעות</span></div>
+        <div class="count-box"><strong id="mins">0</strong><span>דקות</span></div>
+        <div class="count-box"><strong id="secs">0</strong><span>שניות</span></div>
+      </div>
+    </div>
+
+    <div class="hero-actions reveal">
+      <a class="btn btn-primary" href="#days">🍺 יאללה מתחילים</a>
+      <a class="btn btn-soft" href="#info">פרטי הטיול</a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section id="days">
+    <div class="section-head reveal">
+      <span class="eyebrow">שלושה ימים בפראג</span>
+      <h2>תוכנית הטיול</h2>
+      <p>מסלול רגוע, אוכל טוב, חיי לילה והרבה זמן ליהנות מהעיר בלי לרוץ בין שעות.</p>
+    </div>
+
+    <div class="days-grid">
+      <article class="day-card reveal" id="day1">
+        <div class="day-media">
+          <img src="1.jpg" alt="פראג ביום הראשון" loading="lazy">
+          <span class="day-label">יום 1</span>
+          <div class="day-title">
+            <h3>שישי | ברוכים הבאים לפראג</h3>
+            <p>העיר העתיקה, הרובע היהודי וערב ראשון בעיר</p>
+          </div>
+        </div>
+        <div class="day-body">
+          <div class="timeline">
+            <div class="step"><i>✈️</i><span>נחיתה בפראג והגעה למרכז העיר</span></div>
+            <div class="step"><i>🏛️</i><span>טיול בעיר העתיקה</span></div>
+            <div class="step"><i>🕰️</i><span>השעון האסטרונומי</span></div>
+            <div class="step"><i>✡️</i><span>הרובע היהודי</span></div>
+            <div class="step"><i>🏨</i><span>צ'ק אין ב-Hilton Old Town</span></div>
+            <div class="step"><i>🥩</i><span>ארוחת סטייקים</span></div>
+            <div class="step"><i>🎰</i><span>קזינו וחיי לילה</span></div>
+          </div>
+        </div>
+      </article>
+
+      <article class="day-card reveal" id="day2">
+        <div class="day-media">
+          <img src="2.jpg" alt="פראג ביום השני" loading="lazy">
+          <span class="day-label">יום 2</span>
+          <div class="day-title">
+            <h3>שבת | Prague Vibes</h3>
+            <p>בוקר רגוע, קניות, שוק שבת ו-LEVELS</p>
+          </div>
+        </div>
+        <div class="day-body">
+          <div class="timeline">
+            <div class="step"><i>🍳</i><span>ארוחת בוקר רגועה</span></div>
+            <div class="step"><i>🛍️</i><span>קניות ומרכזי מסחר</span></div>
+            <div class="step"><i>🌮</i><span>שוק שבת מקומי</span></div>
+            <div class="step"><i>🍺</i><span>זמן חופשי ובירות בעיר</span></div>
+            <div class="step"><i>😴</i><span>מנוחה והתרעננות במלון</span></div>
+            <div class="step"><i>🍽️</i><span>ארוחת ערב</span></div>
+            <div class="step"><i>🎉</i><span>יציאה למועדון LEVELS</span></div>
+          </div>
+        </div>
+      </article>
+
+      <article class="day-card reveal" id="day3">
+        <div class="day-media">
+          <img src="3.jpg" alt="פראג ביום השלישי" loading="lazy">
+          <span class="day-label">יום 3</span>
+          <div class="day-title">
+            <h3>ראשון | Last Beer</h3>
+            <p>בוקר פתוח, חוויות אחרונות ובירה אחרונה</p>
+          </div>
+        </div>
+        <div class="day-body">
+          <div class="timeline">
+            <div class="step"><i>🍳</i><span>ארוחת בוקר</span></div>
+            <div class="step"><i>🧳</i><span>צ'ק אאוט ואחסון מזוודות</span></div>
+            <div class="step"><i>🛁</i><span>אופציה: ספא בירה</span></div>
+            <div class="step"><i>🏰</i><span>אופציה: מצודת פראג</span></div>
+            <div class="step"><i>⚽</i><span>אופציה: דרבי פראג</span></div>
+            <div class="step"><i>🍻</i><span>בירה אחרונה בהחלט</span></div>
+            <div class="step"><i>✈️</i><span>נסיעה לשדה התעופה</span></div>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="trip-info" id="info">
+    <div class="info-card reveal">
+      <div class="info-icon">✈️</div>
+      <div><small>נחיתה בפראג</small><b>30.10.2026 | 08:35</b></div>
+    </div>
+    <div class="info-card reveal">
+      <div class="info-icon">🏨</div>
+      <div><small>המלון שלנו</small><b>Hilton Prague Old Town</b></div>
+    </div>
+    <div class="info-card reveal">
+      <div class="info-icon">📍</div>
+      <div><small>בסיס הטיול</small><b>מרכז פראג</b></div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <strong>הגברים של מרינה • פראג 2026</strong>
+  <span>סופ"ש של חברים, אוכל טוב ובירות קרות</span>
+</footer>
+
+<button class="to-top" id="toTop" aria-label="חזרה למעלה">↑</button>
+
+<script>
+  const progressBar = document.getElementById('progressBar');
+  const toTop = document.getElementById('toTop');
+
+  function onScroll(){
+    const y = window.scrollY;
+    toTop.classList.toggle('show', y > 500);
+
+    const doc = document.documentElement;
+    const max = doc.scrollHeight - doc.clientHeight;
+    progressBar.style.width = max > 0 ? `${(y / max) * 100}%` : '0%';
+  }
+
+  window.addEventListener('scroll', onScroll, { passive:true });
+  onScroll();
+  });
+
+  toTop.addEventListener('click', () => window.scrollTo({top:0,behavior:'smooth'}));
+
+  const revealEls = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window){
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting){
+          entry.target.classList.add('in');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold:.12 });
+    revealEls.forEach(el => observer.observe(el));
+  } else {
+    revealEls.forEach(el => el.classList.add('in'));
+  }
+
+  const target = new Date('2026-10-30T08:35:00+01:00').getTime();
+  const d = document.getElementById('days');
+  const h = document.getElementById('hours');
+  const m = document.getElementById('mins');
+  const s = document.getElementById('secs');
+
+  function updateCountdown(){
+    const diff = target - Date.now();
+    if (diff <= 0){
+      d.textContent = h.textContent = m.textContent = s.textContent = '0';
+      return;
+    }
+    d.textContent = Math.floor(diff / 86400000);
+    h.textContent = Math.floor((diff % 86400000) / 3600000);
+    m.textContent = Math.floor((diff % 3600000) / 60000);
+    s.textContent = Math.floor((diff % 60000) / 1000);
+  }
+  updateCountdown();
+  setInterval(updateCountdown,1000);
+</script>
+
+</body>
+</html>
