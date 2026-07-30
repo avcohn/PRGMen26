@@ -1,932 +1,3 @@
-
-Conversation with Gemini
-תשפר את הקוד את הUX
-
-ותעשה שהרקע של האתר יהיה הסקייליין של פראג בWATERMARK או עיצוב ראוי שלא יהיה כהה מידי
-
-
-
-<!DOCTYPE html>
-
-<html lang="he" dir="rtl">
-
-<head>
-
-<meta charset="UTF-8">
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>הגברים של מרינה | פראג 2026</title>
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-
-<link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@500;700;900&family=Assistant:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-
-<script src="https://unpkg.com/@phosphor-icons/web"></script>
-
-<style>
-
-:root{
-
-  --paper:#f6efdd;--paper-deep:#efe3c7;--card:#fffbf1;
-
-  --ink:#3a2415;--ink-soft:#6e5640;--muted:#8f7a5c;
-
-  --copper:#b5672f;--copper-d:#8a4a22;--copper-l:#d0864f;
-
-  --amber:#c9922f;--amber-d:#9c721f;--amber-l:#e0b563;
-
-  --cherry:#8a3226;--cherry-d:#6d271d;--cherry-l:#a8493a;
-
-  --border:rgba(139,84,42,.18);--border-l:rgba(139,84,42,.34);
-
-  --r:14px;--rl:22px;
-
-  --transition:all .3s cubic-bezier(.4,0,.2,1);
-
-}
-
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-
-html{scroll-behavior:smooth;scroll-padding-top:104px;width:100%;max-width:100%;overflow-x:hidden}
-
-body{font-family:'Assistant',sans-serif;background:var(--paper);color:var(--ink-soft);line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
-
-h1,h2,h3{font-family:'Frank Ruhl Libre',serif;color:var(--ink)}
-
-img{max-width:100%}
-
-::selection{background:var(--amber-l);color:var(--ink)}
-
-
-
-#pb{position:fixed;top:0;right:0;left:0;height:3px;width:0%;background:linear-gradient(to left,var(--amber),var(--copper),var(--cherry));z-index:9999;transition:width .1s linear}
-
-
-
-.nav{position:sticky;top:0;z-index:100;background:rgba(246,239,221,.94);backdrop-filter:blur(10px);border-bottom:1px solid var(--border)}
-
-.nav-in{max-width:1180px;margin:auto;padding:0 22px;display:flex;align-items:center;justify-content:space-between;height:60px;gap:14px}
-
-.nav-brand{display:flex;align-items:center;gap:10px;text-decoration:none;flex-shrink:0}
-
-.nav-brand .stamp{width:32px;height:32px;border-radius:50%;background:radial-gradient(circle at 35% 30%,var(--amber-l),var(--copper) 60%,var(--cherry) 100%);display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 2px var(--paper),0 0 0 3px var(--border-l)}
-
-.nav-brand .stamp i{color:var(--card);font-size:16px}
-
-.nav-brand span{color:var(--copper-d);font-weight:800;font-size:15.5px;font-family:'Frank Ruhl Libre',serif;letter-spacing:.2px}
-
-.nav-links{display:flex;gap:4px;align-items:center;overflow-x:auto;scrollbar-width:none}
-
-.nav-links::-webkit-scrollbar{display:none}
-
-.nav-links a,.nav-links button{color:var(--ink-soft);text-decoration:none;font-size:13.5px;font-weight:700;padding:8px 14px;border-radius:999px;transition:var(--transition);white-space:nowrap;background:none;border:1px solid transparent;cursor:pointer;font-family:inherit;display:flex;align-items:center;gap:6px}
-
-.nav-links a i,.nav-links button i{font-size:15px}
-
-.nav-links a:hover,.nav-links button:hover{color:var(--ink);background:rgba(181,103,47,.08)}
-
-.nav-links a.active{color:#fff9ec;background:var(--copper)}
-
-.nav-links button.special{border-color:var(--border-l);color:var(--copper-d)}
-
-.nav-links button.special:hover{background:rgba(181,103,47,.1)}
-
-
-
-.hero{position:relative;padding:60px 20px 50px;overflow:hidden;background:
-
-  repeating-linear-gradient(115deg,transparent 0 34px,rgba(58,36,21,.035) 35px,transparent 36px),
-
-  radial-gradient(ellipse at 15% 0%,rgba(201,146,47,.14),transparent 50%),
-
-  radial-gradient(ellipse at 90% 100%,rgba(138,50,38,.09),transparent 50%),
-
-  var(--paper)}
-
-.hero-logo{position:relative;z-index:1;max-width:600px;width:90%;margin:0 auto;text-align:center}
-
-.hero-logo img{width:100%;height:auto;display:block;filter:drop-shadow(0 16px 36px rgba(58,36,21,.24))}
-
-
-
-.dash{max-width:1120px;margin:6px auto 0;padding:0 20px;position:relative;z-index:2}
-
-.dash-card{background:linear-gradient(135deg,var(--card),var(--paper-deep));border:1px solid var(--border);border-radius:var(--rl);padding:22px 24px;box-shadow:0 20px 44px rgba(139,84,42,.14)}
-
-.dash-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px}
-
-.dash-tile{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:14px;text-align:center}
-
-.dash-tile i{font-size:19px;color:var(--copper-d);margin-bottom:6px;display:block}
-
-.dash-tile .dv{color:var(--ink);font-weight:800;font-size:17px;font-family:'Frank Ruhl Libre',serif}
-
-.dash-tile .dl{color:var(--muted);font-size:11px;font-weight:600;margin-top:2px}
-
-
-
-.tstrip{background:var(--paper-deep);border-bottom:1px solid var(--border);position:sticky;top:60px;z-index:99;overflow-x:auto;scrollbar-width:none}
-
-.tstrip::-webkit-scrollbar{display:none}
-
-.tstrip-in{max-width:1180px;margin:auto;padding:0 20px;display:flex}
-
-.ts{flex:1;min-width:120px;padding:13px 10px;text-align:center;color:var(--muted);font-size:13px;font-weight:700;border-top:3px solid transparent;text-decoration:none;transition:var(--transition)}
-
-.ts:hover{color:var(--ink)}
-
-.ts.active_sec{color:var(--copper-d);border-top-color:var(--copper);background:rgba(181,103,47,.06)}
-
-.ts small{display:block;font-size:11px;font-weight:400;opacity:.75;margin-top:2px}
-
-
-
-.wrap{max-width:1160px;margin:auto;padding:64px 22px}
-
-.sec-hdr{margin-bottom:36px;text-align:center;display:flex;flex-direction:column;align-items:center}
-
-.clbl{display:inline-flex;align-items:center;gap:8px;padding:7px 16px;border-radius:999px;font-size:11.5px;font-weight:800;letter-spacing:1px;text-transform:uppercase;margin-bottom:14px;background:var(--paper-deep);color:var(--copper-d);border:1px solid var(--border)}
-
-.sec-title{font-weight:900;font-size:clamp(28px,4.5vw,40px);letter-spacing:-1px}
-
-
-
-.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
-
-.card{background:var(--card);border:1px solid var(--border);border-radius:var(--rl);overflow:hidden;transition:var(--transition);display:flex;flex-direction:column;box-shadow:0 10px 26px rgba(139,84,42,.08)}
-
-.card:hover{transform:translateY(-6px);box-shadow:0 26px 50px rgba(139,84,42,.16)}
-
-.cimg-w{position:relative;height:220px;overflow:hidden;background:var(--paper-deep)}
-
-.cimg-w img{width:100%;height:100%;object-fit:cover;filter:sepia(.28) saturate(1.08) contrast(1.03);transition:transform .6s ease}
-
-.card:hover .cimg-w img{transform:scale(1.06)}
-
-.cov{position:absolute;inset:0;background:linear-gradient(to top,rgba(58,36,21,.45) 0%,rgba(58,36,21,.06) 55%,transparent 100%);pointer-events:none}
-
-.dtag{position:absolute;top:16px;right:16px;background:var(--card);color:var(--ink);padding:8px 14px;border-radius:11px;font-size:13px;font-weight:800;line-height:1.25;box-shadow:0 4px 12px rgba(0,0,0,.18)}
-
-.dtag small{display:block;font-weight:500;font-size:10.5px;color:var(--muted)}
-
-.cbody{padding:24px;flex-grow:1;display:flex;flex-direction:column}
-
-.cbody h3{font-size:21px;margin-bottom:14px;font-weight:800;letter-spacing:-.3px}
-
-.acts{list-style:none;display:flex;flex-direction:column;gap:9px;margin-bottom:18px}
-
-.acts li{display:flex;align-items:flex-start;gap:10px;font-size:13.5px;color:var(--ink-soft);line-height:1.5}
-
-.dot{width:7px;height:7px;border-radius:50%;flex-shrink:0;margin-top:6px;background:var(--accent,var(--copper))}
-
-.hl{margin-top:auto;padding:14px 16px;background:var(--paper-deep);border-right:3px solid var(--accent,var(--copper));border-radius:0 10px 10px 0;font-size:13px;font-weight:600;color:var(--ink-soft);line-height:1.5;display:flex;gap:9px;align-items:flex-start}
-
-.hl i{color:var(--accent,var(--copper));font-size:18px;margin-top:1px;flex-shrink:0}
-
-.day-tools-row{margin-top:14px}
-
-.tool-chip{width:100%;display:flex;align-items:center;justify-content:center;gap:7px;background:var(--paper-deep);border:1px solid var(--border);border-radius:11px;padding:10px;font-size:12.5px;font-weight:700;color:var(--ink);cursor:pointer;font-family:inherit;transition:var(--transition)}
-
-.tool-chip:hover{background:rgba(181,103,47,.1);border-color:var(--border-l)}
-
-.tool-chip i{color:var(--copper-d)}
-
-
-
-/* in-card chooser (day 3 open slot) */
-
-.chooser-inline{margin-top:auto;padding-top:6px}
-
-.chooser-hdr-sm{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:700;color:var(--ink);margin-bottom:11px}
-
-.chooser-hdr-sm i{color:var(--cherry-l);font-size:16px;flex-shrink:0}
-
-.chooser-grid{display:flex;flex-direction:column;gap:8px;margin-bottom:10px}
-
-.chip-card{display:flex;align-items:center;gap:11px;background:var(--paper-deep);border:1.5px solid var(--border);border-radius:12px;padding:10px 12px;cursor:pointer;transition:var(--transition);position:relative;text-align:right}
-
-.chip-card:hover{border-color:var(--border-l)}
-
-.chip-card.chosen{border-color:var(--copper);background:linear-gradient(160deg,rgba(181,103,47,.12),var(--paper-deep))}
-
-.chip-card .ci{width:34px;height:34px;border-radius:50%;background:var(--card);display:flex;align-items:center;justify-content:center;font-size:15px;color:var(--copper-d);flex-shrink:0;transition:var(--transition)}
-
-.chip-card.chosen .ci{background:var(--copper);color:#fff8ec}
-
-.chip-card .ctext{flex:1;min-width:0}
-
-.chip-card .ct{font-weight:800;color:var(--ink);font-size:13px}
-
-.chip-card .cd{font-size:11px;color:var(--muted);line-height:1.4;margin-top:1px}
-
-.chip-card .cmark{position:absolute;top:7px;left:7px;width:17px;height:17px;border-radius:50%;background:var(--copper);color:#fff8ec;display:none;align-items:center;justify-content:center;font-size:9.5px}
-
-.chip-card.chosen .cmark{display:flex}
-
-.chooser-note{font-size:11.5px;color:var(--muted);text-align:center}
-
-
-
-footer{background:var(--paper-deep);border-top:1px solid var(--border);padding:40px 24px;text-align:center;color:var(--muted);font-size:13.5px;line-height:2}
-
-footer .fbrand{color:var(--copper-d);font-weight:700;font-family:'Frank Ruhl Libre',serif;font-size:15px}
-
-
-
-.toast{position:fixed;bottom:22px;right:22px;background:var(--ink);color:var(--paper);padding:13px 19px;border-radius:12px;font-size:13.5px;font-weight:600;box-shadow:0 10px 28px rgba(0,0,0,.28);display:flex;align-items:center;gap:9px;opacity:0;transform:translateY(10px);transition:all .35s cubic-bezier(.22,1,.36,1);pointer-events:none;z-index:9998;max-width:270px}
-
-.toast.show{opacity:1;transform:translateY(0)}
-
-.toast i{color:var(--amber-l);font-size:17px;flex-shrink:0}
-
-
-
-.popup-overlay{position:fixed;inset:0;z-index:2000;background:rgba(58,36,21,.55);backdrop-filter:blur(5px);display:flex;align-items:center;justify-content:center;padding:16px;opacity:0;pointer-events:none;transition:opacity .3s ease}
-
-.popup-overlay.open{opacity:1;pointer-events:auto}
-
-.popup-box{background:var(--card);border:1px solid var(--border-l);border-radius:20px;width:100%;max-width:520px;max-height:88vh;overflow-y:auto;box-shadow:0 30px 70px rgba(58,36,21,.3);transform:translateY(16px) scale(.97);transition:transform .3s cubic-bezier(.22,1,.36,1)}
-
-.popup-overlay.open .popup-box{transform:translateY(0) scale(1)}
-
-.popup-header{position:sticky;top:0;display:flex;align-items:center;justify-content:space-between;padding:18px 22px 14px;background:var(--card);border-bottom:1px solid var(--border);border-radius:20px 20px 0 0}
-
-.popup-header h2{font-size:19px;display:flex;align-items:center;gap:9px}
-
-.popup-header h2 i{color:var(--copper-d)}
-
-.popup-close{width:34px;height:34px;border-radius:50%;background:var(--paper-deep);border:1px solid var(--border);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:18px;color:var(--muted);transition:var(--transition)}
-
-.popup-close:hover{color:var(--ink);border-color:var(--border-l)}
-
-.popup-body{padding:18px 22px 22px}
-
-
-
-.map-frame-wrap{border-radius:14px;overflow:hidden;border:1px solid var(--border);height:300px;margin-bottom:12px;background:var(--paper-deep)}
-
-.map-frame-wrap iframe{width:100%;height:100%;border:0}
-
-.map-open-link{display:flex;align-items:center;justify-content:center;gap:8px;background:var(--copper);color:#fff8ec;text-decoration:none;padding:12px;border-radius:12px;font-weight:800;font-size:13.5px}
-
-
-
-.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s cubic-bezier(.22,1,.36,1)}
-
-.reveal.visible{opacity:1;transform:translateY(0)}
-
-@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
-
-
-
-@media(max-width:900px){
-
-  .grid{grid-template-columns:1fr}
-
-}
-
-@media(max-width:760px){
-
-  .nav-in{height:auto;padding:10px 14px;flex-direction:column;gap:8px}
-
-  .nav-links{width:100%;justify-content:flex-start}
-
-  .tstrip{top:96px}
-
-  .ts{min-width:100px;font-size:12px}
-
-  .hero{padding:36px 14px 30px}
-
-  .dash-card{padding:18px}
-
-  .wrap{padding:46px 16px}
-
-  .cbody{padding:20px}
-
-  .toast{right:14px;left:14px;max-width:none}
-
-}
-
-</style>
-
-</head>
-
-<body>
-
-
-
-<div class="toast" id="toast" role="status" aria-live="polite"><i class="ph ph-check-circle"></i><span id="toast-msg"></span></div>
-
-<div id="pb"></div>
-
-
-
-<nav class="nav">
-
-  <div class="nav-in">
-
-    <a href="#" class="nav-brand"><span class="stamp"><i class="ph ph-beer-stein"></i></span><span>הגברים של מרינה · פראג 2026</span></a>
-
-    <div class="nav-links">
-
-      <a href="#day1">יום 1</a>
-
-      <a href="#day2">יום 2</a>
-
-      <a href="#day3">יום 3</a>
-
-      <button class="special" onclick="openMapFor('hotel')"><i class="ph ph-map-trifold"></i> מפה</button>
-
-    </div>
-
-  </div>
-
-</nav>
-
-
-
-<header class="hero">
-
-  <div class="hero-logo reveal visible">
-
-    <img src="logo.png" alt="הגברים של מרינה — פראג 2026" onerror="this.style.display='none'">
-
-  </div>
-
-</header>
-
-
-
-<div class="dash reveal">
-
-  <div class="dash-card">
-
-    <div class="dash-grid">
-
-      <div class="dash-tile"><i class="ph ph-thermometer-simple"></i><div class="dv" id="dashWeather">--°</div><div class="dl">פראג עכשיו</div></div>
-
-      <div class="dash-tile"><i class="ph ph-hourglass-medium"></i><div class="dv" id="dashCountdown">--</div><div class="dl" id="dashCountdownLbl">עד ההמראה</div></div>
-
-      <div class="dash-tile"><i class="ph ph-bed"></i><div class="dv" style="font-size:14px">Old Town</div><div class="dl">Hilton Prague</div></div>
-
-    </div>
-
-  </div>
-
-</div>
-
-
-
-<div class="tstrip">
-
-  <div class="tstrip-in">
-
-    <a href="#day1" class="ts active_sec">יום 1<small>שישי 30.10</small></a>
-
-    <a href="#day2" class="ts">יום 2<small>שבת 31.10</small></a>
-
-    <a href="#day3" class="ts">יום 3<small>ראשון 01.11</small></a>
-
-  </div>
-
-</div>
-
-
-
-<section>
-
-  <div class="wrap">
-
-    <div class="sec-hdr reveal">
-
-      <div class="clbl"><i class="ph ph-calendar"></i> 3 ימים בפראג</div>
-
-      <h2 class="sec-title">הלו"ז</h2>
-
-    </div>
-
-
-
-    <div class="grid">
-
-
-
-      <!-- ══ DAY 1 ══ -->
-
-      <article class="card reveal" id="day1" style="--accent:var(--copper)">
-
-        <div class="cimg-w">
-
-          <img src="1.jpg" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1559925393-8be0ec4767c8?auto=format&fit=crop&w=900&q=80'" alt="יום 1 – העיר העתיקה" loading="lazy">
-
-          <div class="cov"></div>
-
-          <div class="dtag">יום 1<small>שישי · 30.10</small></div>
-
-        </div>
-
-        <div class="cbody">
-
-          <h3>העיר העתיקה</h3>
-
-          <ul class="acts">
-
-            <li><span class="dot"></span>נחיתה 08:35 ונסיעה למרכז העיר</li>
-
-            <li><span class="dot"></span>העיר העתיקה — כיכר, השעון האסטרונומי, הסמטאות</li>
-
-            <li><span class="dot"></span>גשר קארל — טיול רגלי ותצפיות</li>
-
-            <li><span class="dot"></span>הרובע היהודי — בתי הכנסת, בית הקברות, הסמטאות</li>
-
-            <li><span class="dot"></span>צ'ק אין ב-Hilton Prague Old Town</li>
-
-            <li><span class="dot"></span>ארוחת ערב — סטייק</li>
-
-            <li><span class="dot"></span>ערב — קזינו / ברים</li>
-
-          </ul>
-
-          <div class="hl"><i class="ph ph-bed"></i> צ'ק אין ב-Hilton Prague Old Town, במרחק הליכה מכל אתרי היום.</div>
-
-          <div class="day-tools-row">
-
-            <button class="tool-chip" onclick="openMapFor('hotel')"><i class="ph ph-map-trifold"></i> מפה למלון</button>
-
-          </div>
-
-        </div>
-
-      </article>
-
-
-
-      <!-- ══ DAY 2 ══ -->
-
-      <article class="card reveal" id="day2" style="--accent:var(--amber-d)">
-
-        <div class="cimg-w">
-
-          <img src="2.jpg" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1565120130276-dfbd9a7a3ad7?auto=format&fit=crop&w=900&q=80'" alt="יום 2 – שוק ובירה" loading="lazy">
-
-          <div class="cov"></div>
-
-          <div class="dtag">יום 2<small>שבת · 31.10</small></div>
-
-        </div>
-
-        <div class="cbody">
-
-          <h3>שוק, בירה ומועדון</h3>
-
-          <ul class="acts">
-
-            <li><span class="dot"></span>בוקר רגוע</li>
-
-            <li><span class="dot"></span>קניות</li>
-
-            <li><span class="dot"></span>שוק שבת — שוק בירה מקומי בעיר</li>
-
-            <li><span class="dot"></span>ארוחת ערב</li>
-
-            <li><span class="dot"></span>ערב — LEVELS, יציאה למועדון</li>
-
-          </ul>
-
-          <div class="hl"><i class="ph ph-music-notes"></i> LEVELS Prague — אחד ממועדוני הלילה המוכרים בעיר, פתוח עד השעות הקטנות.</div>
-
-          <div class="day-tools-row">
-
-            <button class="tool-chip" onclick="openMapFor('levels')"><i class="ph ph-map-trifold"></i> מפה ל-LEVELS</button>
-
-          </div>
-
-        </div>
-
-      </article>
-
-
-
-      <!-- ══ DAY 3 ══ -->
-
-      <article class="card reveal" id="day3" style="--accent:var(--cherry)">
-
-        <div class="cimg-w">
-
-          <img src="3.jpg" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1546182990-dffeafbe841d?auto=format&fit=crop&w=900&q=80'" alt="יום 3 – זמן חופשי וחזרה" loading="lazy">
-
-          <div class="cov"></div>
-
-          <div class="dtag">יום 3<small>ראשון · 01.11</small></div>
-
-        </div>
-
-        <div class="cbody">
-
-          <h3>זמן חופשי וחזרה</h3>
-
-          <ul class="acts">
-
-            <li><span class="dot"></span>ארוחת בוקר</li>
-
-            <li><span class="dot"></span>צ'ק אאוט</li>
-
-            <li><span class="dot"></span>זמן חופשי — הבחירה למטה 👇</li>
-
-            <li><span class="dot"></span>בירה אחרונה</li>
-
-            <li><span class="dot"></span>נסיעה לשדה התעופה</li>
-
-          </ul>
-
-          <div class="chooser-inline">
-
-            <div class="chooser-hdr-sm"><i class="ph ph-question"></i> הזמן הפתוח — תבחרו כשתגיעו</div>
-
-            <div class="chooser-grid" id="chooserGrid"></div>
-
-            <div class="chooser-note" id="chooserNote"></div>
-
-          </div>
-
-        </div>
-
-      </article>
-
-
-
-    </div>
-
-  </div>
-
-</section>
-
-
-
-<footer>
-
-  <div class="fbrand">הגברים של מרינה</div>
-
-  פראג · 30.10 – 01.11.2026
-
-</footer>
-
-
-
-<!-- ══ MAP POPUP ══ -->
-
-<div class="popup-overlay" id="mapPopup" role="dialog" aria-modal="true" aria-labelledby="mapPopupTitle">
-
-  <div class="popup-box">
-
-    <div class="popup-header">
-
-      <h2 id="mapPopupTitle"><i class="ph ph-map-trifold"></i> מפה</h2>
-
-      <button class="popup-close" aria-label="סגירה" onclick="closePopup('mapPopup')"><i class="ph ph-x"></i></button>
-
-    </div>
-
-    <div class="popup-body">
-
-      <div class="map-frame-wrap"><iframe id="mapFrame" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="מפה"></iframe></div>
-
-      <a class="map-open-link" id="mapOpenLink" href="#" target="_blank" rel="noopener"><i class="ph ph-arrow-square-out"></i> פתחו ב-Google Maps</a>
-
-    </div>
-
-  </div>
-
-</div>
-
-
-
-<script>
-
-/* ═══ CHOOSER (day 3 open slot) ═══ */
-
-const CHOICES = [
-
-  {id:'spa', icon:'ph-drop', title:'Beer Spa', desc:'אמבטיית בירה, זמן רגוע לפני הטיסה'},
-
-  {id:'castle', icon:'ph-castle-turret', title:'מצודת פראג', desc:'התצפית והרובע ההיסטורי מעל העיר'},
-
-  {id:'derby', icon:'ph-soccer-ball', title:'דרבי פראג', desc:'משחק כדורגל, אם התאריכים מסתדרים'}
-
-];
-
-const CK = 'prague2026_day3_choice';
-
-function loadChoice(){ try{ return localStorage.getItem(CK)||''; }catch(e){ return ''; } }
-
-function saveChoice(v){ try{ localStorage.setItem(CK, v); }catch(e){} }
-
-function renderChooser(){
-
-  const chosen = loadChoice();
-
-  document.getElementById('chooserGrid').innerHTML = CHOICES.map(c=>`
-
-    <div class="chip-card ${chosen===c.id?'chosen':''}" onclick="pickChoice('${c.id}')" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();pickChoice('${c.id}')}">
-
-      <div class="cmark"><i class="ph ph-check"></i></div>
-
-      <div class="ci"><i class="ph ${c.icon}"></i></div>
-
-      <div class="ctext"><div class="ct">${c.title}</div><div class="cd">${c.desc}</div></div>
-
-    </div>`).join('');
-
-  const note = document.getElementById('chooserNote');
-
-  note.textContent = chosen ? `הבחירה הנוכחית: ${CHOICES.find(c=>c.id===chosen).title} — אפשר לשנות בכל רגע.` : 'עדיין לא סומנה בחירה.';
-
-}
-
-function pickChoice(id){
-
-  const cur = loadChoice();
-
-  const next = cur===id ? '' : id;
-
-  saveChoice(next);
-
-  renderChooser();
-
-  if(next) showToast(`✓ סומן: ${CHOICES.find(c=>c.id===next).title}`);
-
-}
-
-renderChooser();
-
-
-
-/* ═══ TOAST ═══ */
-
-let toastT;
-
-function showToast(msg){
-
-  const t=document.getElementById('toast');
-
-  document.getElementById('toast-msg').textContent=msg;
-
-  t.classList.add('show');
-
-  clearTimeout(toastT);
-
-  toastT=setTimeout(()=>t.classList.remove('show'),2800);
-
-}
-
-
-
-/* ═══ POPUPS ═══ */
-
-let lastFocusedEl=null;
-
-function openPopup(id){
-
-  lastFocusedEl=document.activeElement;
-
-  const el=document.getElementById(id);
-
-  el.classList.add('open');
-
-  document.body.style.overflow='hidden';
-
-  const cb=el.querySelector('.popup-close');
-
-  if(cb) cb.focus();
-
-}
-
-function closePopup(id){
-
-  document.getElementById(id).classList.remove('open');
-
-  document.body.style.overflow='';
-
-  if(lastFocusedEl && typeof lastFocusedEl.focus==='function') lastFocusedEl.focus();
-
-}
-
-document.querySelectorAll('.popup-overlay').forEach(el=>{
-
-  el.addEventListener('click', e=>{ if(e.target===el) closePopup(el.id); });
-
-});
-
-document.addEventListener('keydown', e=>{
-
-  if(e.key==='Escape') document.querySelectorAll('.popup-overlay.open').forEach(el=>closePopup(el.id));
-
-});
-
-
-
-/* ═══ MAP ═══ */
-
-const MAP_QUERIES = {
-
-  hotel:'Hilton Prague Old Town',
-
-  steak:'best steak restaurant Old Town Prague',
-
-  levels:'LEVELS Prague nightclub'
-
-};
-
-function openMapFor(key){
-
-  const q=encodeURIComponent(MAP_QUERIES[key]||MAP_QUERIES.hotel);
-
-  document.getElementById('mapFrame').src=`https://www.google.com/maps?q=${q}&output=embed`;
-
-  document.getElementById('mapOpenLink').href=`https://www.google.com/maps/search/?api=1&query=${q}`;
-
-  openPopup('mapPopup');
-
-}
-
-
-
-/* ═══ DASHBOARD: weather / countdown to takeoff ═══ */
-
-async function fetchDashWeather(){
-
-  try{
-
-    const controller=new AbortController();
-
-    const timeout=setTimeout(()=>controller.abort(),6000);
-
-    const r=await fetch('https://api.open-meteo.com/v1/forecast?latitude=50.0755&longitude=14.4378&current=temperature_2m',{signal:controller.signal});
-
-    clearTimeout(timeout);
-
-    if(!r.ok) throw new Error('bad response');
-
-    const d=await r.json();
-
-    document.getElementById('dashWeather').textContent=Math.round(d.current.temperature_2m)+'°';
-
-  }catch(e){ document.getElementById('dashWeather').textContent='—'; }
-
-}
-
-/* Departure from Israel, 05:20 local time on 30.10.2026 (IST, UTC+2 — clocks are back to winter time by then) */
-
-const DEPARTURE=new Date('2026-10-30T05:20:00+02:00');
-
-const TRIP_END=new Date('2026-11-01T20:00:00+01:00');
-
-function updateCountdown(){
-
-  const now=new Date();
-
-  const el=document.getElementById('dashCountdown');
-
-  const lbl=document.getElementById('dashCountdownLbl');
-
-  if(now<DEPARTURE){
-
-    const diff=DEPARTURE-now;
-
-    const d=Math.floor(diff/86400000);
-
-    const h=Math.floor((diff%86400000)/3600000);
-
-    if(d>0){ el.textContent=d+' ימים'; }
-
-    else{ el.textContent=h+' שעות'; }
-
-    lbl.textContent='עד ההמראה';
-
-  }else if(now<=TRIP_END){
-
-    el.textContent='🍺';
-
-    lbl.textContent='בטיול!';
-
-  }else{
-
-    el.textContent='✓';
-
-    lbl.textContent='הטיול הסתיים';
-
-  }
-
-}
-
-
-
-/* ═══ SCROLL / NAV ═══ */
-
-const pb=document.getElementById('pb');
-
-window.addEventListener('scroll',()=>{
-
-  const h=document.documentElement;
-
-  pb.style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight))*100+'%';
-
-},{passive:true});
-
-
-
-const revObs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');}),{threshold:.1});
-
-document.querySelectorAll('.reveal').forEach(el=>revObs.observe(el));
-
-
-
-const dayOrder=['day1','day2','day3'];
-
-const stripLinks=document.querySelectorAll('.ts');
-
-const navLinks=document.querySelectorAll('.nav-links a');
-
-let scrollTicking=false;
-
-function updateActive(){
-
-  let cur=dayOrder[0];
-
-  dayOrder.forEach(id=>{ const el=document.getElementById(id); if(el&&window.scrollY>=el.offsetTop-160) cur=id; });
-
-  stripLinks.forEach(a=>a.classList.toggle('active_sec',a.getAttribute('href')==='#'+cur));
-
-  navLinks.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+cur));
-
-}
-
-window.addEventListener('scroll',()=>{
-
-  if(!scrollTicking){ window.requestAnimationFrame(()=>{updateActive();scrollTicking=false;}); scrollTicking=true; }
-
-},{passive:true});
-
-updateActive();
-
-
-
-/* INIT */
-
-fetchDashWeather();
-
-updateCountdown();
-
-setInterval(updateCountdown,60000);
-
-</script>
-
-</body>
-
-</html>
-
-הקובץ המעודכן שלך מוכן
-HTML icon
-prague-itinerary-v2
- HTML 
-Open
-
-שיפרתי את ה-UX והעיצוב משמעותית כדי לייצר חוויה פרימיום, יוקרתית אך עדיין פונקציונלית, וכמובן הוספתי את הרקע המבוקש.
-
-הנה השינויים המרכזיים שבוצעו:
-
-רקע Watermark של פראג:
-
-הוספתי גרפיקה עדינה (SVG Inline) של קו הרקיע וגשר של פראג.
-
-הרקע לא כהה מדי – הוא יושב על צבע הבסיס הבהיר עם רמת שקיפות נמוכה (Opacity של 3-4%) שמשתלבת באופן טבעי ואלגנטי ולא פוגעת בקריאות התוכן.
-
-הרקע מוגדר כ-Fixed (נשאר קבוע בזמן שגוללים מטה).
-
-אפקט Glassmorphism (זכוכית חלבית):
-
-כדי שהרקע של פראג יוכל לבצבץ מתחת לאלמנטים מבלי לפגוע בקריאות, עדכנתי את כרטיסיות הלו"ז, סרגל הניווט (Navbar) וסרגל הימים להשתמש באפקט מודרני של backdrop-filter: blur. זה יוצר מראה של "זכוכית" שדרכה רואים במעומעם את רקע הסקייליין.
-
-שדרוגי חוויית משתמש (UX) וממשק (UI):
-
-אנימציות רכות: שיפרתי את זמני התגובה (Transitions) של הכפתורים והכרטיסיות. כרטיסיות הלו"ז עולות מעט למעלה וזורחות בצל רך כאשר מעבירים עליהן את העכבר.
-
-טיפוגרפיה וריווחים: הגדלתי טיפה את הרווחים, שייפתי את הכותרות והבלטתי טקסטים חשובים כדי שהקריאה תהיה נוחה גם במסכים קטנים.
-
-משחק הבחירה (יום 3): שיפרתי את אנימציית הבחירה (מופיע פופ-אפ "V" נחמד באנימציה קופצת ברגע שמסמנים בחירה).
-
-התראות (Toasts): עיצבתי מחדש את ההתראה שקופצת למטה כך שתהיה יותר מודרנית ובולטת במרחב הכהה.
-
-סמל וניווט: הוספתי אפקט תלת-מימדי עדין וסיבוב לסמל הבירה בסרגל העליון כשמרחפים עליו, לטאצ' עיצובי משעשע.
-
-תהנו מהטיול לפראג!
-
-
-
-
-Your Amsalem Business Travel chats aren’t used to improve our models. Gemini is AI and can make mistakes. Your privacy & GeminiOpens in a new window
-
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
@@ -960,23 +31,38 @@ Your Amsalem Business Travel chats aren’t used to improve our models. Gemini i
   --transition: all .35s cubic-bezier(.4,0,.2,1);
 }
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; scroll-padding-top: 104px; width: 100%; max-width: 100%; overflow-x: hidden; }
+html { scroll-behavior: smooth; scroll-padding-top: 120px; width: 100%; max-width: 100%; overflow-x: hidden; }
 
-/* ══ BACKGROUND WATERMARK & GLASSMORPHISM ══ */
+/* ══ BACKGROUND IMAGE & BASE ══ */
 body {
   font-family: 'Assistant', sans-serif;
   background-color: var(--paper);
-  /* Prague Skyline & Bridge Watermark SVG */
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 300' preserveAspectRatio='none'%3E%3Cpath fill='%238a4a22' opacity='0.04' d='M0,300 V150 L20,150 L25,120 L30,150 L50,150 L70,180 L100,180 L110,130 L115,90 L120,130 L130,180 L160,180 L180,100 L185,60 L190,100 L210,180 L250,180 L260,140 L265,110 L270,140 L280,180 L320,180 L340,130 L345,80 L350,130 L370,180 L410,180 L420,160 L425,130 L430,160 L440,180 L480,180 L500,120 L505,70 L510,120 L530,180 L570,180 L580,150 L585,110 L590,150 L600,180 L640,180 L660,110 L665,60 L670,110 L690,180 L730,180 L740,140 L745,100 L750,140 L760,180 L800,180 L820,130 L825,80 L830,130 L850,180 L890,180 L900,160 L905,120 L910,160 L920,180 L960,180 L980,140 L985,90 L990,140 L1010,180 L1050,180 L1060,150 L1065,110 L1070,150 L1080,180 L1120,180 L1140,120 L1145,70 L1150,120 L1170,180 L1200,180 V300 Z'/%3E%3Cpath fill='%238a4a22' opacity='0.03' d='M0,300 V230 Q50,200 100,230 Q150,200 200,230 Q250,200 300,230 Q350,200 400,230 Q450,200 500,230 Q550,200 600,230 Q650,200 700,230 Q750,200 800,230 Q850,200 900,230 Q950,200 1000,230 Q1050,200 1100,230 Q1150,200 1200,230 V300 Z'/%3E%3C/svg%3E");
-  background-attachment: fixed;
-  background-position: bottom center;
-  background-size: 1000px auto;
-  background-repeat: repeat-x;
   color: var(--ink-soft);
   line-height: 1.6;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
+  position: relative;
 }
+
+/* Faded Prague Skyline Background */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* High-quality Prague image from Unsplash */
+  background-image: url('https://images.unsplash.com/photo-1519677100203-a0e668c92439?auto=format&fit=crop&w=1920&q=80');
+  background-size: cover;
+  background-position: center 30%;
+  background-repeat: no-repeat;
+  opacity: 0.08; /* Extremely faded to ensure high readability */
+  filter: sepia(40%) contrast(110%);
+  z-index: -1;
+  pointer-events: none;
+}
+
 h1, h2, h3 { font-family: 'Frank Ruhl Libre', serif; color: var(--ink); }
 img { max-width: 100%; }
 ::selection { background: var(--amber-l); color: var(--ink); }
@@ -984,137 +70,118 @@ img { max-width: 100%; }
 #pb { position: fixed; top: 0; right: 0; left: 0; height: 4px; width: 0%; background: linear-gradient(to left, var(--amber), var(--copper), var(--cherry)); z-index: 9999; transition: width .15s ease-out; }
 
 /* ══ NAVBAR ══ */
-.nav { position: sticky; top: 0; z-index: 100; background: rgba(246,239,221,.85); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); box-shadow: 0 4px 20px rgba(139,84,42,.05); }
-.nav-in { max-width: 1180px; margin: auto; padding: 0 22px; display: flex; align-items: center; justify-content: space-between; height: 64px; gap: 14px; }
+.nav { position: sticky; top: 0; z-index: 100; background: rgba(246,239,221,.75); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-bottom: 1px solid var(--border); box-shadow: 0 4px 20px rgba(139,84,42,.08); }
+.nav-in { max-width: 1180px; margin: auto; padding: 0 22px; display: flex; align-items: center; justify-content: space-between; height: 72px; gap: 14px; }
 .nav-brand { display: flex; align-items: center; gap: 12px; text-decoration: none; flex-shrink: 0; }
-.nav-brand .stamp { width: 36px; height: 36px; border-radius: 50%; background: radial-gradient(circle at 35% 30%, var(--amber-l), var(--copper) 60%, var(--cherry) 100%); display: flex; align-items: center; justify-content: center; box-shadow: 0 0 0 2px rgba(255,255,255,0.5), 0 0 0 4px var(--border-l); transition: transform .3s ease; }
-.nav-brand:hover .stamp { transform: rotate(-10deg) scale(1.05); }
-.nav-brand .stamp i { color: var(--card); font-size: 18px; }
-.nav-brand span { color: var(--copper-d); font-weight: 800; font-size: 16px; font-family: 'Frank Ruhl Libre', serif; letter-spacing: .2px; }
-.nav-links { display: flex; gap: 6px; align-items: center; overflow-x: auto; scrollbar-width: none; }
+.nav-brand .stamp { width: 40px; height: 40px; border-radius: 50%; background: radial-gradient(circle at 35% 30%, var(--amber-l), var(--copper) 60%, var(--cherry) 100%); display: flex; align-items: center; justify-content: center; box-shadow: 0 0 0 2px rgba(255,255,255,0.6), 0 0 0 4px var(--border-l); transition: transform .3s ease; }
+.nav-brand:hover .stamp { transform: rotate(-10deg) scale(1.08); }
+.nav-brand .stamp i { color: var(--card); font-size: 20px; }
+.nav-brand span { color: var(--copper-d); font-weight: 800; font-size: 18px; font-family: 'Frank Ruhl Libre', serif; letter-spacing: .2px; }
+.nav-links { display: flex; gap: 8px; align-items: center; overflow-x: auto; scrollbar-width: none; }
 .nav-links::-webkit-scrollbar { display: none; }
-.nav-links a, .nav-links button { color: var(--ink-soft); text-decoration: none; font-size: 14px; font-weight: 700; padding: 8px 16px; border-radius: 999px; transition: var(--transition); white-space: nowrap; background: none; border: 1px solid transparent; cursor: pointer; font-family: inherit; display: flex; align-items: center; gap: 6px; }
-.nav-links a i, .nav-links button i { font-size: 16px; }
-.nav-links a:hover, .nav-links button:hover { color: var(--ink); background: rgba(181,103,47,.08); transform: translateY(-1px); }
-.nav-links a.active { color: #fff9ec; background: var(--copper); box-shadow: 0 4px 12px rgba(181,103,47,.25); }
-.nav-links button.special { border-color: var(--border-l); color: var(--copper-d); background: rgba(255,255,255,0.4); }
-.nav-links button.special:hover { background: rgba(181,103,47,.12); border-color: var(--copper); }
+.nav-links a { color: var(--ink-soft); text-decoration: none; font-size: 15px; font-weight: 700; padding: 8px 18px; border-radius: 999px; transition: var(--transition); white-space: nowrap; display: flex; align-items: center; gap: 6px; }
+.nav-links a:hover { color: var(--ink); background: rgba(181,103,47,.1); transform: translateY(-1px); }
+.nav-links a.active { color: #fff9ec; background: var(--copper); box-shadow: 0 4px 14px rgba(181,103,47,.3); }
 
 /* ══ HERO & DASHBOARD ══ */
-.hero { position: relative; padding: 70px 20px 60px; overflow: hidden; background: radial-gradient(ellipse at 50% 0%, rgba(201,146,47,.15), transparent 60%), radial-gradient(ellipse at 90% 100%, rgba(138,50,38,.1), transparent 60%); }
+.hero { position: relative; padding: 80px 20px 60px; overflow: hidden; background: radial-gradient(ellipse at 50% 0%, rgba(201,146,47,.2), transparent 70%), radial-gradient(ellipse at 90% 100%, rgba(138,50,38,.15), transparent 60%); }
 .hero-logo { position: relative; z-index: 1; max-width: 600px; width: 90%; margin: 0 auto; text-align: center; }
 .hero-logo img { width: 100%; height: auto; display: block; filter: drop-shadow(0 16px 36px rgba(58,36,21,.24)); }
 
-.dash { max-width: 1120px; margin: 0 auto; padding: 0 20px; position: relative; z-index: 2; transform: translateY(-20px); }
-.dash-card { background: linear-gradient(135deg, rgba(255,251,241,0.92), rgba(239,227,199,0.92)); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid rgba(139,84,42,.15); border-radius: var(--rl); padding: 24px; box-shadow: 0 20px 44px rgba(139,84,42,.12), inset 0 1px 0 rgba(255,255,255,0.6); }
-.dash-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 16px; }
-.dash-tile { background: rgba(255,255,255,0.6); border: 1px solid var(--border); border-radius: var(--r); padding: 18px 14px; text-align: center; transition: var(--transition); }
-.dash-tile:hover { transform: translateY(-3px); background: rgba(255,255,255,0.9); box-shadow: 0 8px 24px rgba(139,84,42,.08); }
-.dash-tile i { font-size: 22px; color: var(--copper-d); margin-bottom: 8px; display: block; }
-.dash-tile .dv { color: var(--ink); font-weight: 800; font-size: 19px; font-family: 'Frank Ruhl Libre', serif; }
-.dash-tile .dl { color: var(--muted); font-size: 12px; font-weight: 700; margin-top: 4px; text-transform: uppercase; letter-spacing: 0.5px; }
+.dash { max-width: 600px; margin: 0 auto; padding: 0 20px; position: relative; z-index: 2; transform: translateY(-25px); }
+.dash-card { background: linear-gradient(135deg, rgba(255,251,241,0.85), rgba(239,227,199,0.85)); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid rgba(139,84,42,.2); border-radius: var(--rl); padding: 28px; box-shadow: 0 20px 44px rgba(139,84,42,.15), inset 0 1px 0 rgba(255,255,255,0.7); }
+.clock-cap { text-align: center; font-size: 13px; font-weight: 800; color: var(--copper-d); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 16px; }
+.clock-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+.clock-unit { background: rgba(255,255,255,0.7); border: 1px solid var(--border); border-radius: var(--r); padding: 14px 4px; text-align: center; box-shadow: 0 4px 12px rgba(139,84,42,.03); }
+.clock-unit .cnum { font-family: 'Frank Ruhl Libre', serif; font-weight: 900; font-size: 28px; color: var(--ink); font-variant-numeric: tabular-nums; line-height: 1; }
+.clock-unit .cu-lbl { font-size: 11px; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: .5px; margin-top: 6px; }
 
 /* ══ TABS / STRIP ══ */
-.tstrip { background: rgba(239,227,199,.85); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); border-top: 1px solid rgba(255,255,255,0.4); position: sticky; top: 64px; z-index: 99; overflow-x: auto; scrollbar-width: none; box-shadow: 0 4px 12px rgba(139,84,42,.04); }
+.tstrip { background: rgba(239,227,199,.75); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-bottom: 1px solid var(--border); border-top: 1px solid rgba(255,255,255,0.5); position: sticky; top: 72px; z-index: 99; overflow-x: auto; scrollbar-width: none; box-shadow: 0 4px 16px rgba(139,84,42,.06); }
 .tstrip::-webkit-scrollbar { display: none; }
 .tstrip-in { max-width: 1180px; margin: auto; padding: 0 20px; display: flex; }
-.ts { flex: 1; min-width: 120px; padding: 14px 10px; text-align: center; color: var(--muted); font-size: 14px; font-weight: 800; border-bottom: 3px solid transparent; text-decoration: none; transition: var(--transition); }
-.ts:hover { color: var(--ink); background: rgba(255,255,255,0.3); }
-.ts.active_sec { color: var(--copper-d); border-bottom-color: var(--copper); background: rgba(181,103,47,.06); }
-.ts small { display: block; font-size: 11.5px; font-weight: 600; opacity: .8; margin-top: 2px; }
+.ts { flex: 1; min-width: 120px; padding: 16px 10px; text-align: center; color: var(--muted); font-size: 15px; font-weight: 800; border-bottom: 3px solid transparent; text-decoration: none; transition: var(--transition); }
+.ts:hover { color: var(--ink); background: rgba(255,255,255,0.4); }
+.ts.active_sec { color: var(--copper-d); border-bottom-color: var(--copper); background: rgba(181,103,47,.08); }
+.ts small { display: block; font-size: 12px; font-weight: 600; opacity: .8; margin-top: 4px; }
 
 /* ══ CONTENT GRID ══ */
-.wrap { max-width: 1160px; margin: auto; padding: 50px 22px 80px; }
-.sec-hdr { margin-bottom: 44px; text-align: center; display: flex; flex-direction: column; align-items: center; }
-.clbl { display: inline-flex; align-items: center; gap: 8px; padding: 8px 18px; border-radius: 999px; font-size: 12.5px; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 16px; background: rgba(239,227,199,0.8); backdrop-filter: blur(8px); color: var(--copper-d); border: 1px solid var(--border); box-shadow: 0 4px 12px rgba(139,84,42,.06); }
-.sec-title { font-weight: 900; font-size: clamp(32px, 5vw, 44px); letter-spacing: -1px; text-shadow: 0 2px 10px rgba(255,255,255,0.8); }
+.wrap { max-width: 1160px; margin: auto; padding: 60px 22px 90px; }
+.sec-hdr { margin-bottom: 50px; text-align: center; display: flex; flex-direction: column; align-items: center; }
+.clbl { display: inline-flex; align-items: center; gap: 8px; padding: 10px 20px; border-radius: 999px; font-size: 13px; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 18px; background: rgba(239,227,199,0.85); backdrop-filter: blur(8px); color: var(--copper-d); border: 1px solid var(--border); box-shadow: 0 4px 16px rgba(139,84,42,.08); }
+.sec-title { font-weight: 900; font-size: clamp(36px, 5vw, 48px); letter-spacing: -1px; text-shadow: 0 2px 12px rgba(255,255,255,0.9); }
 
-.grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
-.card { background: rgba(255,251,241,.92); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid rgba(139,84,42,.15); border-radius: var(--rl); overflow: hidden; transition: var(--transition); display: flex; flex-direction: column; box-shadow: 0 12px 32px rgba(139,84,42,.08), inset 0 1px 0 rgba(255,255,255,0.6); }
-.card:hover { transform: translateY(-8px); box-shadow: 0 26px 50px rgba(139,84,42,.16), inset 0 1px 0 rgba(255,255,255,0.8); border-color: rgba(139,84,42,.25); }
-.cimg-w { position: relative; height: 240px; overflow: hidden; background: var(--paper-deep); }
-.cimg-w img { width: 100%; height: 100%; object-fit: cover; filter: sepia(.2) saturate(1.15) contrast(1.05); transition: transform .7s cubic-bezier(.22,1,.36,1); }
-.card:hover .cimg-w img { transform: scale(1.08); filter: sepia(.1) saturate(1.2) contrast(1.1); }
-.cov { position: absolute; inset: 0; background: linear-gradient(to top, rgba(58,36,21,.55) 0%, rgba(58,36,21,.1) 50%, transparent 100%); pointer-events: none; transition: opacity .4s ease; }
-.card:hover .cov { opacity: 0.8; }
-.dtag { position: absolute; top: 18px; right: 18px; background: rgba(255,251,241,0.95); backdrop-filter: blur(8px); color: var(--ink); padding: 10px 16px; border-radius: 14px; font-size: 14px; font-weight: 800; line-height: 1.25; box-shadow: 0 8px 20px rgba(0,0,0,.15); border: 1px solid rgba(255,255,255,0.5); }
-.dtag small { display: block; font-weight: 600; font-size: 11px; color: var(--muted); }
-.cbody { padding: 28px; flex-grow: 1; display: flex; flex-direction: column; }
-.cbody h3 { font-size: 24px; margin-bottom: 18px; font-weight: 800; letter-spacing: -.3px; }
-.acts { list-style: none; display: flex; flex-direction: column; gap: 12px; margin-bottom: 22px; }
-.acts li { display: flex; align-items: flex-start; gap: 12px; font-size: 14.5px; color: var(--ink-soft); line-height: 1.5; font-weight: 500; }
-.dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; margin-top: 7px; background: var(--accent, var(--copper)); box-shadow: 0 0 0 3px rgba(181,103,47,.15); }
-.hl { margin-top: auto; padding: 16px 18px; background: rgba(239,227,199,0.6); border-right: 4px solid var(--accent, var(--copper)); border-radius: 0 12px 12px 0; font-size: 13.5px; font-weight: 600; color: var(--ink); line-height: 1.5; display: flex; gap: 10px; align-items: flex-start; }
-.hl i { color: var(--accent, var(--copper)); font-size: 20px; margin-top: 1px; flex-shrink: 0; }
-.day-tools-row { margin-top: 18px; }
-.tool-chip { width: 100%; display: flex; align-items: center; justify-content: center; gap: 8px; background: rgba(255,255,255,0.7); border: 1px solid rgba(139,84,42,.2); border-radius: 12px; padding: 12px; font-size: 13.5px; font-weight: 700; color: var(--ink); cursor: pointer; font-family: inherit; transition: var(--transition); box-shadow: 0 2px 8px rgba(139,84,42,.04); }
-.tool-chip:hover { background: rgba(255,255,255,1); border-color: var(--copper); transform: translateY(-2px); box-shadow: 0 6px 16px rgba(139,84,42,.1); }
-.tool-chip i { color: var(--copper-d); font-size: 16px; }
+.grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+.card { background: rgba(255,251,241,.85); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border: 1px solid rgba(139,84,42,.15); border-radius: var(--rl); overflow: hidden; transition: var(--transition); display: flex; flex-direction: column; box-shadow: 0 16px 36px rgba(139,84,42,.1), inset 0 1px 0 rgba(255,255,255,0.7); }
+.card:hover { transform: translateY(-10px); box-shadow: 0 30px 60px rgba(139,84,42,.18), inset 0 1px 0 rgba(255,255,255,0.9); border-color: rgba(139,84,42,.3); }
+.cimg-w { position: relative; height: 260px; overflow: hidden; background: var(--paper-deep); }
+.cimg-w img { width: 100%; height: 100%; object-fit: cover; filter: sepia(.15) saturate(1.1) contrast(1.05); transition: transform .8s cubic-bezier(.22,1,.36,1); }
+.card:hover .cimg-w img { transform: scale(1.08); filter: sepia(.05) saturate(1.2) contrast(1.1); }
+.cov { position: absolute; inset: 0; background: linear-gradient(to top, rgba(58,36,21,.65) 0%, rgba(58,36,21,.15) 50%, transparent 100%); pointer-events: none; transition: opacity .4s ease; }
+.card:hover .cov { opacity: 0.9; }
+.dtag { position: absolute; top: 20px; right: 20px; background: rgba(255,251,241,0.95); backdrop-filter: blur(8px); color: var(--ink); padding: 12px 18px; border-radius: 14px; font-size: 15px; font-weight: 800; line-height: 1.25; box-shadow: 0 8px 24px rgba(0,0,0,.18); border: 1px solid rgba(255,255,255,0.6); }
+.dtag small { display: block; font-weight: 600; font-size: 12px; color: var(--muted); margin-top: 2px; }
+.cbody { padding: 32px; flex-grow: 1; display: flex; flex-direction: column; }
+.cbody h3 { font-size: 26px; margin-bottom: 20px; font-weight: 800; letter-spacing: -.3px; }
+.acts { list-style: none; display: flex; flex-direction: column; gap: 14px; margin-bottom: 26px; }
+.acts li { display: flex; align-items: flex-start; gap: 12px; font-size: 15px; color: var(--ink-soft); line-height: 1.5; font-weight: 500; }
+.dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; margin-top: 8px; background: var(--accent, var(--copper)); box-shadow: 0 0 0 3px rgba(181,103,47,.15); }
+.hl { margin-top: auto; padding: 18px 20px; background: rgba(239,227,199,0.7); border-right: 4px solid var(--accent, var(--copper)); border-radius: 0 12px 12px 0; font-size: 14px; font-weight: 600; color: var(--ink); line-height: 1.5; display: flex; gap: 12px; align-items: flex-start; }
+.hl i { color: var(--accent, var(--copper)); font-size: 22px; margin-top: 1px; flex-shrink: 0; }
 
 /* ══ CHOOSER ══ */
-.chooser-inline { margin-top: auto; padding-top: 8px; }
+.chooser-inline { margin-top: auto; padding-top: 10px; }
 .chooser-hdr-sm { display: flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 800; color: var(--ink); margin-bottom: 14px; }
 .chooser-hdr-sm i { color: var(--cherry-l); font-size: 18px; flex-shrink: 0; }
-.chooser-grid { display: flex; flex-direction: column; gap: 10px; margin-bottom: 12px; }
-.chip-card { display: flex; align-items: center; gap: 12px; background: rgba(255,255,255,0.5); border: 1.5px solid var(--border); border-radius: 14px; padding: 12px 14px; cursor: pointer; transition: var(--transition); position: relative; text-align: right; }
-.chip-card:hover { border-color: var(--copper-l); background: rgba(255,255,255,0.9); transform: translateX(-4px); }
-.chip-card.chosen { border-color: var(--copper); background: linear-gradient(160deg, rgba(255,255,255,0.9), rgba(239,227,199,0.7)); box-shadow: 0 8px 20px rgba(139,84,42,.12); }
-.chip-card .ci { width: 38px; height: 38px; border-radius: 50%; background: var(--card); display: flex; align-items: center; justify-content: center; font-size: 18px; color: var(--copper-d); flex-shrink: 0; transition: var(--transition); box-shadow: 0 2px 8px rgba(139,84,42,.1); }
+.chooser-grid { display: flex; flex-direction: column; gap: 12px; margin-bottom: 14px; }
+.chip-card { display: flex; align-items: center; gap: 14px; background: rgba(255,255,255,0.6); border: 1.5px solid var(--border); border-radius: 16px; padding: 14px 16px; cursor: pointer; transition: var(--transition); position: relative; text-align: right; }
+.chip-card:hover { border-color: var(--copper-l); background: rgba(255,255,255,0.95); transform: translateX(-4px); box-shadow: 0 6px 16px rgba(139,84,42,.08); }
+.chip-card.chosen { border-color: var(--copper); background: linear-gradient(160deg, rgba(255,255,255,0.95), rgba(239,227,199,0.8)); box-shadow: 0 10px 24px rgba(139,84,42,.15); }
+.chip-card .ci { width: 42px; height: 42px; border-radius: 50%; background: var(--card); display: flex; align-items: center; justify-content: center; font-size: 20px; color: var(--copper-d); flex-shrink: 0; transition: var(--transition); box-shadow: 0 2px 10px rgba(139,84,42,.12); }
 .chip-card.chosen .ci { background: var(--copper); color: #fff8ec; }
 .chip-card .ctext { flex: 1; min-width: 0; }
-.chip-card .ct { font-weight: 800; color: var(--ink); font-size: 14px; }
-.chip-card .cd { font-size: 12px; color: var(--muted); line-height: 1.4; margin-top: 2px; }
-.chip-card .cmark { position: absolute; top: -6px; left: -6px; width: 22px; height: 22px; border-radius: 50%; background: var(--copper); color: #fff8ec; display: none; align-items: center; justify-content: center; font-size: 12px; box-shadow: 0 4px 10px rgba(139,84,42,.3); border: 2px solid var(--card); }
+.chip-card .ct { font-weight: 800; color: var(--ink); font-size: 15px; }
+.chip-card .cd { font-size: 13px; color: var(--muted); line-height: 1.4; margin-top: 3px; }
+.chip-card .cmark { position: absolute; top: -6px; left: -6px; width: 24px; height: 24px; border-radius: 50%; background: var(--copper); color: #fff8ec; display: none; align-items: center; justify-content: center; font-size: 12px; box-shadow: 0 4px 12px rgba(139,84,42,.35); border: 2px solid var(--card); z-index: 2; }
 .chip-card.chosen .cmark { display: flex; animation: popIn .3s cubic-bezier(.175, .885, .32, 1.275); }
 @keyframes popIn { 0% { transform: scale(0); } 100% { transform: scale(1); } }
-.chooser-note { font-size: 12px; color: var(--muted); text-align: center; font-weight: 600; }
+.chooser-note { font-size: 13px; color: var(--muted); text-align: center; font-weight: 600; background: rgba(255,255,255,0.5); padding: 8px; border-radius: 8px; }
 
 /* ══ FOOTER ══ */
-footer { background: rgba(239,227,199,0.9); backdrop-filter: blur(12px); border-top: 1px solid rgba(255,255,255,0.6); padding: 48px 24px; text-align: center; color: var(--muted); font-size: 14px; line-height: 2; position: relative; z-index: 10; }
-footer .fbrand { color: var(--copper-d); font-weight: 800; font-family: 'Frank Ruhl Libre', serif; font-size: 17px; margin-bottom: 4px; }
+footer { background: rgba(239,227,199,0.8); backdrop-filter: blur(16px); border-top: 1px solid rgba(255,255,255,0.6); padding: 50px 24px; text-align: center; color: var(--muted); font-size: 15px; line-height: 2; position: relative; z-index: 10; }
+footer .fbrand { color: var(--copper-d); font-weight: 800; font-family: 'Frank Ruhl Libre', serif; font-size: 19px; margin-bottom: 6px; }
 
 /* ══ TOAST ══ */
-.toast { position: fixed; bottom: 28px; right: 28px; background: rgba(58,36,21,0.95); backdrop-filter: blur(10px); color: var(--paper); padding: 14px 22px; border-radius: 14px; font-size: 14.5px; font-weight: 700; box-shadow: 0 12px 32px rgba(0,0,0,.3); display: flex; align-items: center; gap: 12px; opacity: 0; transform: translateY(16px); transition: all .4s cubic-bezier(.22,1,.36,1); pointer-events: none; z-index: 9998; max-width: 320px; border: 1px solid rgba(255,255,255,0.1); }
+.toast { position: fixed; bottom: 32px; right: 32px; background: rgba(58,36,21,0.95); backdrop-filter: blur(12px); color: var(--paper); padding: 16px 24px; border-radius: 16px; font-size: 15px; font-weight: 700; box-shadow: 0 16px 40px rgba(0,0,0,.35); display: flex; align-items: center; gap: 14px; opacity: 0; transform: translateY(20px); transition: all .4s cubic-bezier(.22,1,.36,1); pointer-events: none; z-index: 9998; max-width: 340px; border: 1px solid rgba(255,255,255,0.15); }
 .toast.show { opacity: 1; transform: translateY(0); }
-.toast i { color: var(--amber-l); font-size: 20px; flex-shrink: 0; }
-
-/* ══ POPUP ══ */
-.popup-overlay { position: fixed; inset: 0; z-index: 2000; background: rgba(30,18,10,.6); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); display: flex; align-items: center; justify-content: center; padding: 20px; opacity: 0; pointer-events: none; transition: opacity .35s ease; }
-.popup-overlay.open { opacity: 1; pointer-events: auto; }
-.popup-box { background: var(--card); border: 1px solid rgba(255,255,255,0.8); border-radius: 24px; width: 100%; max-width: 560px; max-height: 90vh; overflow-y: auto; box-shadow: 0 40px 80px rgba(0,0,0,.4); transform: translateY(24px) scale(.96); transition: transform .4s cubic-bezier(.22,1,.36,1); }
-.popup-overlay.open .popup-box { transform: translateY(0) scale(1); }
-.popup-header { position: sticky; top: 0; display: flex; align-items: center; justify-content: space-between; padding: 20px 24px 16px; background: rgba(255,251,241,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); border-radius: 24px 24px 0 0; z-index: 10; }
-.popup-header h2 { font-size: 22px; display: flex; align-items: center; gap: 10px; }
-.popup-header h2 i { color: var(--copper-d); }
-.popup-close { width: 38px; height: 38px; border-radius: 50%; background: var(--paper-deep); border: 1px solid var(--border); cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 18px; color: var(--muted); transition: var(--transition); }
-.popup-close:hover { background: var(--copper); color: #fff; border-color: var(--copper); transform: rotate(90deg); }
-.popup-body { padding: 20px 24px 28px; }
-
-.map-frame-wrap { border-radius: 16px; overflow: hidden; border: 1px solid var(--border); height: 340px; margin-bottom: 16px; background: var(--paper-deep); box-shadow: inset 0 2px 8px rgba(0,0,0,.05); }
-.map-frame-wrap iframe { width: 100%; height: 100%; border: 0; }
-.map-open-link { display: flex; align-items: center; justify-content: center; gap: 10px; background: linear-gradient(135deg, var(--copper), var(--cherry-l)); color: #fff8ec; text-decoration: none; padding: 14px; border-radius: 14px; font-weight: 800; font-size: 14.5px; transition: var(--transition); box-shadow: 0 8px 24px rgba(138,50,38,.25); }
-.map-open-link:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(138,50,38,.35); filter: brightness(1.1); }
+.toast i { color: var(--amber-l); font-size: 22px; flex-shrink: 0; }
 
 /* ══ ANIMATIONS ══ */
-.reveal { opacity: 0; transform: translateY(32px); transition: opacity .8s ease, transform .8s cubic-bezier(.22,1,.36,1); }
+.reveal { opacity: 0; transform: translateY(40px); transition: opacity .8s ease, transform .8s cubic-bezier(.22,1,.36,1); }
 .reveal.visible { opacity: 1; transform: translateY(0); }
 @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } html { scroll-behavior: auto; } }
 
+/* ══ KEYBOARD FOCUS ══ */
+.nav-links a:focus-visible, .ts:focus-visible, .chip-card:focus-visible, .nav-brand:focus-visible {
+  outline: 3px solid var(--copper); outline-offset: 4px; border-radius: 8px;
+}
+
 /* ══ RESPONSIVE ══ */
 @media(max-width: 960px){
-  .grid { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; }
+  .grid { grid-template-columns: repeat(2, 1fr); gap: 24px; }
 }
 @media(max-width: 760px){
-  .nav-in { height: auto; padding: 12px 16px; flex-direction: column; gap: 10px; }
-  .nav-links { width: 100%; justify-content: flex-start; padding-bottom: 4px; }
-  .tstrip { top: 108px; }
-  .ts { min-width: 100px; font-size: 13px; padding: 12px 6px; }
-  .hero { padding: 40px 16px 36px; }
-  .dash { transform: translateY(-10px); }
-  .dash-card { padding: 20px; }
-  .wrap { padding: 40px 16px 60px; }
-  .cbody { padding: 24px 20px; }
-  .toast { right: 16px; left: 16px; bottom: 20px; max-width: none; }
+  .grid { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; gap: 28px; }
+  .nav-in { height: auto; padding: 14px 18px; flex-direction: column; gap: 12px; }
+  .nav-links { width: 100%; justify-content: flex-start; padding-bottom: 6px; }
+  .tstrip { top: 120px; }
+  .ts { min-width: 100px; font-size: 14px; padding: 14px 8px; }
+  .hero { padding: 50px 16px 40px; }
+  .dash { transform: translateY(-15px); max-width: 100%; }
+  .dash-card { padding: 24px; }
+  .wrap { padding: 40px 16px 70px; }
+  .cbody { padding: 26px 22px; }
+  .toast { right: 16px; left: 16px; bottom: 20px; max-width: none; border-radius: 12px; }
 }
 </style>
 </head>
@@ -1130,7 +197,6 @@ footer .fbrand { color: var(--copper-d); font-weight: 800; font-family: 'Frank R
       <a href="#day1">יום 1</a>
       <a href="#day2">יום 2</a>
       <a href="#day3">יום 3</a>
-      <button class="special" onclick="openMapFor('hotel')"><i class="ph ph-map-trifold"></i> מפה</button>
     </div>
   </div>
 </nav>
@@ -1143,10 +209,12 @@ footer .fbrand { color: var(--copper-d); font-weight: 800; font-family: 'Frank R
 
 <div class="dash reveal">
   <div class="dash-card">
-    <div class="dash-grid">
-      <div class="dash-tile"><i class="ph ph-thermometer-simple"></i><div class="dv" id="dashWeather">--°</div><div class="dl">פראג עכשיו</div></div>
-      <div class="dash-tile"><i class="ph ph-hourglass-medium"></i><div class="dv" id="dashCountdown">--</div><div class="dl" id="dashCountdownLbl">עד ההמראה</div></div>
-      <div class="dash-tile"><i class="ph ph-bed"></i><div class="dv" style="font-size:15px; letter-spacing:0.5px">Old Town</div><div class="dl">Hilton Prague</div></div>
+    <div class="clock-cap" id="clockCap">עד ההמראה · 30.10 · 05:20</div>
+    <div class="clock-grid" id="clockGrid">
+      <div class="clock-unit"><div class="cnum" id="cdD">--</div><div class="cu-lbl">ימים</div></div>
+      <div class="clock-unit"><div class="cnum" id="cdH">--</div><div class="cu-lbl">שעות</div></div>
+      <div class="clock-unit"><div class="cnum" id="cdM">--</div><div class="cu-lbl">דקות</div></div>
+      <div class="clock-unit"><div class="cnum" id="cdS">--</div><div class="cu-lbl">שניות</div></div>
     </div>
   </div>
 </div>
@@ -1171,7 +239,8 @@ footer .fbrand { color: var(--copper-d); font-weight: 800; font-family: 'Frank R
       <!-- ══ DAY 1 ══ -->
       <article class="card reveal" id="day1" style="--accent:var(--copper)">
         <div class="cimg-w">
-          <img src="1.jpg" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1559925393-8be0ec4767c8?auto=format&fit=crop&w=900&q=80'" alt="יום 1 – העיר העתיקה" loading="lazy">
+          <!-- Fallback updated to Prague Astronomical Clock area -->
+          <img src="1.jpg" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1541882822616-24dd945162f6?auto=format&fit=crop&w=900&q=80'" alt="יום 1 – העיר העתיקה">
           <div class="cov"></div>
           <div class="dtag">יום 1<small>שישי · 30.10</small></div>
         </div>
@@ -1182,21 +251,19 @@ footer .fbrand { color: var(--copper-d); font-weight: 800; font-family: 'Frank R
             <li><span class="dot"></span>העיר העתיקה — כיכר, השעון האסטרונומי, הסמטאות</li>
             <li><span class="dot"></span>גשר קארל — טיול רגלי ותצפיות</li>
             <li><span class="dot"></span>הרובע היהודי — בתי הכנסת, בית הקברות</li>
-            <li><span class="dot"></span>צ'ק אין ב-Hilton Prague Old Town</li>
+            <li><span class="dot"></span>צ'ק אין במלון</li>
             <li><span class="dot"></span>ארוחת ערב — סטייק</li>
             <li><span class="dot"></span>ערב — קזינו / ברים</li>
           </ul>
-          <div class="hl"><i class="ph ph-bed"></i> צ'ק אין ב-Hilton Prague Old Town, במרחק הליכה מכל אתרי היום.</div>
-          <div class="day-tools-row">
-            <button class="tool-chip" onclick="openMapFor('hotel')"><i class="ph ph-map-trifold"></i> מפה למלון</button>
-          </div>
+          <div class="hl"><i class="ph ph-bed"></i> צ'ק אין במלון, במרחק הליכה מכל אתרי היום.</div>
         </div>
       </article>
 
       <!-- ══ DAY 2 ══ -->
       <article class="card reveal" id="day2" style="--accent:var(--amber-d)">
         <div class="cimg-w">
-          <img src="2.jpg" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1565120130276-dfbd9a7a3ad7?auto=format&fit=crop&w=900&q=80'" alt="יום 2 – שוק ובירה" loading="lazy">
+          <!-- Fallback updated to local Czech beer aesthetic -->
+          <img src="2.jpg" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1575037614876-c38db0d60f78?auto=format&fit=crop&w=900&q=80'" alt="יום 2 – שוק ובירה" loading="lazy">
           <div class="cov"></div>
           <div class="dtag">יום 2<small>שבת · 31.10</small></div>
         </div>
@@ -1207,19 +274,17 @@ footer .fbrand { color: var(--copper-d); font-weight: 800; font-family: 'Frank R
             <li><span class="dot"></span>קניות</li>
             <li><span class="dot"></span>שוק שבת — שוק בירה מקומי בעיר</li>
             <li><span class="dot"></span>ארוחת ערב</li>
-            <li><span class="dot"></span>ערב — LEVELS, יציאה למועדון</li>
+            <li><span class="dot"></span>ערב — יציאה למועדון LEVELS</li>
           </ul>
-          <div class="hl"><i class="ph ph-music-notes"></i> LEVELS Prague — אחד ממועדוני הלילה המוכרים בעיר, פתוח עד השעות הקטנות.</div>
-          <div class="day-tools-row">
-            <button class="tool-chip" onclick="openMapFor('levels')"><i class="ph ph-map-trifold"></i> מפה ל-LEVELS</button>
-          </div>
+          <div class="hl"><i class="ph ph-music-notes"></i> מועדון ה-LEVELS — אחד המוכרים בעיר, פתוח עד השעות הקטנות.</div>
         </div>
       </article>
 
       <!-- ══ DAY 3 ══ -->
       <article class="card reveal" id="day3" style="--accent:var(--cherry)">
         <div class="cimg-w">
-          <img src="3.jpg" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1546182990-dffeafbe841d?auto=format&fit=crop&w=900&q=80'" alt="יום 3 – זמן חופשי וחזרה" loading="lazy">
+          <!-- Fallback updated to view over Prague Castle/Bridges -->
+          <img src="3.jpg" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1594970036662-7934440538a1?auto=format&fit=crop&w=900&q=80'" alt="יום 3 – זמן חופשי וחזרה" loading="lazy">
           <div class="cov"></div>
           <div class="dtag">יום 3<small>ראשון · 01.11</small></div>
         </div>
@@ -1228,12 +293,11 @@ footer .fbrand { color: var(--copper-d); font-weight: 800; font-family: 'Frank R
           <ul class="acts">
             <li><span class="dot"></span>ארוחת בוקר</li>
             <li><span class="dot"></span>צ'ק אאוט</li>
-            <li><span class="dot"></span>זמן חופשי — הבחירה למטה 👇</li>
+            <li><span class="dot"></span>זמן חופשי לבחירתכם 👇</li>
             <li><span class="dot"></span>בירה אחרונה</li>
             <li><span class="dot"></span>נסיעה לשדה התעופה</li>
           </ul>
           <div class="chooser-inline">
-            <div class="chooser-hdr-sm"><i class="ph ph-question"></i> הזמן הפתוח — תבחרו כשתגיעו</div>
             <div class="chooser-grid" id="chooserGrid"></div>
             <div class="chooser-note" id="chooserNote"></div>
           </div>
@@ -1249,20 +313,6 @@ footer .fbrand { color: var(--copper-d); font-weight: 800; font-family: 'Frank R
   פראג · 30.10 – 01.11.2026
 </footer>
 
-<!-- ══ MAP POPUP ══ -->
-<div class="popup-overlay" id="mapPopup" role="dialog" aria-modal="true" aria-labelledby="mapPopupTitle">
-  <div class="popup-box">
-    <div class="popup-header">
-      <h2 id="mapPopupTitle"><i class="ph ph-map-trifold"></i> מפה</h2>
-      <button class="popup-close" aria-label="סגירה" onclick="closePopup('mapPopup')"><i class="ph ph-x"></i></button>
-    </div>
-    <div class="popup-body">
-      <div class="map-frame-wrap"><iframe id="mapFrame" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="מפה"></iframe></div>
-      <a class="map-open-link" id="mapOpenLink" href="#" target="_blank" rel="noopener"><i class="ph ph-arrow-square-out"></i> פתחו ב-Google Maps</a>
-    </div>
-  </div>
-</div>
-
 <script>
 /* ═══ CHOOSER (day 3 open slot) ═══ */
 const CHOICES = [
@@ -1270,23 +320,33 @@ const CHOICES = [
   {id:'castle', icon:'ph-castle-turret', title:'מצודת פראג', desc:'התצפית והרובע ההיסטורי מעל העיר'},
   {id:'derby', icon:'ph-soccer-ball', title:'דרבי פראג', desc:'משחק כדורגל, אם התאריכים מסתדרים'}
 ];
-const CK = 'prague2026_day3_choice_v2';
-function loadChoice(){ try{ return localStorage.getItem(CK)||''; }catch(e){ return ''; } }
-function saveChoice(v){ try{ localStorage.setItem(CK, v); }catch(e){} }
-function renderChooser(){
+const CK = 'prague2026_day3_choice_v3';
+
+function loadChoice() { 
+  try { return localStorage.getItem(CK) || ''; } 
+  catch(e) { return ''; } 
+}
+function saveChoice(v) { 
+  try { localStorage.setItem(CK, v); } 
+  catch(e) {} 
+}
+
+function renderChooser() {
   const chosen = loadChoice();
-  document.getElementById('chooserGrid').innerHTML = CHOICES.map(c=>`
-    <div class="chip-card ${chosen===c.id?'chosen':''}" onclick="pickChoice('${c.id}')" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();pickChoice('${c.id}')}">
+  document.getElementById('chooserGrid').innerHTML = CHOICES.map(c => `
+    <div class="chip-card ${chosen === c.id ? 'chosen' : ''}" onclick="pickChoice('${c.id}')" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();pickChoice('${c.id}')}">
       <div class="cmark"><i class="ph ph-check-bold"></i></div>
       <div class="ci"><i class="ph ${c.icon}"></i></div>
       <div class="ctext"><div class="ct">${c.title}</div><div class="cd">${c.desc}</div></div>
     </div>`).join('');
+    
   const note = document.getElementById('chooserNote');
-  note.textContent = chosen ? `הבחירה הנוכחית: ${CHOICES.find(c=>c.id===chosen).title} — אפשר לשנות בכל רגע.` : 'עדיין לא סומנה בחירה.';
+  note.textContent = chosen ? `בחירתכם התעדכנה: ${CHOICES.find(c=>c.id===chosen).title} (אפשר לשנות)` : 'עדיין לא סומנה בחירה.';
 }
-function pickChoice(id){
+
+function pickChoice(id) {
   const cur = loadChoice();
-  const next = cur===id ? '' : id;
+  const next = cur === id ? '' : id;
   saveChoice(next);
   renderChooser();
   if(next) showToast(`✓ סומן: ${CHOICES.find(c=>c.id===next).title}`);
@@ -1295,114 +355,87 @@ renderChooser();
 
 /* ═══ TOAST ═══ */
 let toastT;
-function showToast(msg){
-  const t=document.getElementById('toast');
-  document.getElementById('toast-msg').textContent=msg;
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  document.getElementById('toast-msg').textContent = msg;
   t.classList.add('show');
   clearTimeout(toastT);
-  toastT=setTimeout(()=>t.classList.remove('show'),3000);
+  toastT = setTimeout(() => t.classList.remove('show'), 3000);
 }
 
-/* ═══ POPUPS ═══ */
-let lastFocusedEl=null;
-function openPopup(id){
-  lastFocusedEl=document.activeElement;
-  const el=document.getElementById(id);
-  el.classList.add('open');
-  document.body.style.overflow='hidden';
-  const cb=el.querySelector('.popup-close');
-  if(cb) cb.focus();
-}
-function closePopup(id){
-  document.getElementById(id).classList.remove('open');
-  document.body.style.overflow='';
-  if(lastFocusedEl && typeof lastFocusedEl.focus==='function') lastFocusedEl.focus();
-}
-document.querySelectorAll('.popup-overlay').forEach(el=>{
-  el.addEventListener('click', e=>{ if(e.target===el) closePopup(el.id); });
-});
-document.addEventListener('keydown', e=>{
-  if(e.key==='Escape') document.querySelectorAll('.popup-overlay.open').forEach(el=>closePopup(el.id));
-});
+/* ═══ DASHBOARD: countdown to takeoff ═══ */
+const DEPARTURE = new Date('2026-10-30T05:20:00+02:00');
+const TRIP_END = new Date('2026-11-01T20:00:00+01:00');
 
-/* ═══ MAP ═══ */
-const MAP_QUERIES = {
-  hotel:'Hilton Prague Old Town',
-  steak:'best steak restaurant Old Town Prague',
-  levels:'LEVELS Prague nightclub'
-};
-function openMapFor(key){
-  const q=encodeURIComponent(MAP_QUERIES[key]||MAP_QUERIES.hotel);
-  document.getElementById('mapFrame').src=`https://www.google.com/maps?q=${q}&output=embed`;
-  document.getElementById('mapOpenLink').href=`https://www.google.com/maps/search/?api=1&query=${q}`;
-  openPopup('mapPopup');
-}
-
-/* ═══ DASHBOARD: weather / countdown to takeoff ═══ */
-async function fetchDashWeather(){
-  try{
-    const controller=new AbortController();
-    const timeout=setTimeout(()=>controller.abort(),6000);
-    const r=await fetch('https://api.open-meteo.com/v1/forecast?latitude=50.0755&longitude=14.4378&current=temperature_2m',{signal:controller.signal});
-    clearTimeout(timeout);
-    if(!r.ok) throw new Error('bad response');
-    const d=await r.json();
-    document.getElementById('dashWeather').textContent=Math.round(d.current.temperature_2m)+'°';
-  }catch(e){ document.getElementById('dashWeather').textContent='—'; }
-}
-const DEPARTURE=new Date('2026-10-30T05:20:00+02:00');
-const TRIP_END=new Date('2026-11-01T20:00:00+01:00');
-function updateCountdown(){
-  const now=new Date();
-  const el=document.getElementById('dashCountdown');
-  const lbl=document.getElementById('dashCountdownLbl');
-  if(now<DEPARTURE){
-    const diff=DEPARTURE-now;
-    const d=Math.floor(diff/86400000);
-    const h=Math.floor((diff%86400000)/3600000);
-    if(d>0){ el.textContent=d+' ימים'; }
-    else{ el.textContent=h+' שעות'; }
-    lbl.textContent='עד ההמראה';
-  }else if(now<=TRIP_END){
-    el.textContent='🍺';
-    lbl.textContent='בטיול!';
-  }else{
-    el.textContent='✓';
-    lbl.textContent='הטיול הסתיים';
+function updateCountdown() {
+  const now = new Date();
+  const cap = document.getElementById('clockCap');
+  const grid = document.getElementById('clockGrid');
+  
+  if (now < DEPARTURE) {
+    const diff = DEPARTURE - now;
+    const d = Math.floor(diff / 86400000);
+    const h = Math.floor((diff % 86400000) / 3600000);
+    const m = Math.floor((diff % 3600000) / 60000);
+    const s = Math.floor((diff % 60000) / 1000);
+    
+    document.getElementById('cdD').textContent = String(d).padStart(2, '0');
+    document.getElementById('cdH').textContent = String(h).padStart(2, '0');
+    document.getElementById('cdM').textContent = String(m).padStart(2, '0');
+    document.getElementById('cdS').textContent = String(s).padStart(2, '0');
+    grid.style.display = '';
+    cap.textContent = 'עד ההמראה · 30.10 · 05:20';
+  } else if (now <= TRIP_END) {
+    grid.style.display = 'none';
+    cap.textContent = '🍺 בטיול!';
+  } else {
+    grid.style.display = 'none';
+    cap.textContent = '✓ הטיול הסתיים';
   }
 }
 
 /* ═══ SCROLL / NAV ═══ */
-const pb=document.getElementById('pb');
-window.addEventListener('scroll',()=>{
-  const h=document.documentElement;
-  pb.style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight))*100+'%';
-},{passive:true});
+const pb = document.getElementById('pb');
+window.addEventListener('scroll', () => {
+  const h = document.documentElement;
+  pb.style.width = (h.scrollTop / (h.scrollHeight - h.clientHeight)) * 100 + '%';
+}, {passive: true});
 
-const revObs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');}),{threshold:.15});
-document.querySelectorAll('.reveal').forEach(el=>revObs.observe(el));
+const revObs = new IntersectionObserver(es => es.forEach(e => {
+  if (e.isIntersecting) e.target.classList.add('visible');
+}), { threshold: .15 });
+document.querySelectorAll('.reveal').forEach(el => revObs.observe(el));
 
-const dayOrder=['day1','day2','day3'];
-const stripLinks=document.querySelectorAll('.ts');
-const navLinks=document.querySelectorAll('.nav-links a');
-let scrollTicking=false;
-function updateActive(){
-  let cur=dayOrder[0];
-  dayOrder.forEach(id=>{ const el=document.getElementById(id); if(el&&window.scrollY>=el.offsetTop-200) cur=id; });
-  stripLinks.forEach(a=>a.classList.toggle('active_sec',a.getAttribute('href')==='#'+cur));
-  navLinks.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+cur));
+const dayOrder = ['day1', 'day2', 'day3'];
+const stripLinks = document.querySelectorAll('.ts');
+const navLinks = document.querySelectorAll('.nav-links a');
+let scrollTicking = false;
+
+function updateActive() {
+  let cur = dayOrder[0];
+  dayOrder.forEach(id => { 
+    const el = document.getElementById(id); 
+    // Adjusted offset to account for thicker sticky headers
+    if (el && window.scrollY >= el.offsetTop - 240) cur = id; 
+  });
+  stripLinks.forEach(a => a.classList.toggle('active_sec', a.getAttribute('href') === '#' + cur));
+  navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + cur));
 }
-window.addEventListener('scroll',()=>{
-  if(!scrollTicking){ window.requestAnimationFrame(()=>{updateActive();scrollTicking=false;}); scrollTicking=true; }
-},{passive:true});
-updateActive();
+
+window.addEventListener('scroll', () => {
+  if (!scrollTicking) { 
+    window.requestAnimationFrame(() => {
+      updateActive();
+      scrollTicking = false;
+    }); 
+    scrollTicking = true; 
+  }
+}, {passive: true});
 
 /* INIT */
-fetchDashWeather();
+updateActive();
 updateCountdown();
-setInterval(updateCountdown,60000);
+setInterval(updateCountdown, 1000);
 </script>
 </body>
 </html>
-prague-itinerary-v2.html
-Displaying prague-itinerary-v2.html.
