@@ -2,227 +2,448 @@
 <html lang="he" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#fff8ef">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>הגברים של מרינה | פראג 2026</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@500;700;900&family=Heebo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@500;700;900&family=Assistant:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/@phosphor-icons/web"></script>
 <style>
 :root{
-  --cream:#fff8ef;--cream-deep:#f5e4ca;--paper:#fffdf9;
-  --mahogany:#6f3523;--mahogany-soft:#8b4a2e;
-  --amber:#d78b25;--amber-light:#f0b44f;--gold:#c99a45;
-  --ink:#3b241a;--muted:#7b665a;--line:rgba(111,53,35,.16);
-  --shadow:0 22px 60px rgba(87,48,28,.16);--radius:28px;
+  --paper:#f6efdd;--paper-deep:#efe3c7;--card:#fffbf1;
+  --ink:#3a2415;--ink-soft:#6e5640;--muted:#8f7a5c;
+  --copper:#b5672f;--copper-d:#8a4a22;--copper-l:#d0864f;
+  --amber:#c9922f;--amber-d:#9c721f;--amber-l:#e0b563;
+  --cherry:#8a3226;--cherry-d:#6d271d;--cherry-l:#a8493a;
+  --border:rgba(139,84,42,.18);--border-l:rgba(139,84,42,.34);
+  --r:14px;--rl:22px;
+  --transition:all .3s cubic-bezier(.4,0,.2,1);
 }
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{
-  margin:0;min-height:100vh;font-family:"Heebo",sans-serif;color:var(--ink);
-  background:
-    radial-gradient(circle at 15% 10%,rgba(240,180,79,.18),transparent 28%),
-    radial-gradient(circle at 85% 20%,rgba(201,154,69,.15),transparent 30%),
-    linear-gradient(180deg,var(--cream),#fffaf5 60%,var(--cream-deep));
-  overflow-x:hidden;
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:104px;width:100%;max-width:100%;overflow-x:hidden}
+body{font-family:'Assistant',sans-serif;background:var(--paper);color:var(--ink-soft);line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:'Frank Ruhl Libre',serif;color:var(--ink)}
+img{max-width:100%}
+::selection{background:var(--amber-l);color:var(--ink)}
+
+#pb{position:fixed;top:0;right:0;left:0;height:3px;width:0%;background:linear-gradient(to left,var(--amber),var(--copper),var(--cherry));z-index:9999;transition:width .1s linear}
+
+.nav{position:sticky;top:0;z-index:100;background:rgba(246,239,221,.94);backdrop-filter:blur(10px);border-bottom:1px solid var(--border)}
+.nav-in{max-width:1180px;margin:auto;padding:0 22px;display:flex;align-items:center;justify-content:space-between;height:60px;gap:14px}
+.nav-brand{display:flex;align-items:center;gap:10px;text-decoration:none;flex-shrink:0}
+.nav-brand .stamp{width:32px;height:32px;border-radius:50%;background:radial-gradient(circle at 35% 30%,var(--amber-l),var(--copper) 60%,var(--cherry) 100%);display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 2px var(--paper),0 0 0 3px var(--border-l)}
+.nav-brand .stamp i{color:var(--card);font-size:16px}
+.nav-brand span{color:var(--copper-d);font-weight:800;font-size:15.5px;font-family:'Frank Ruhl Libre',serif;letter-spacing:.2px}
+.nav-links{display:flex;gap:4px;align-items:center;overflow-x:auto;scrollbar-width:none}
+.nav-links::-webkit-scrollbar{display:none}
+.nav-links a,.nav-links button{color:var(--ink-soft);text-decoration:none;font-size:13.5px;font-weight:700;padding:8px 14px;border-radius:999px;transition:var(--transition);white-space:nowrap;background:none;border:1px solid transparent;cursor:pointer;font-family:inherit;display:flex;align-items:center;gap:6px}
+.nav-links a i,.nav-links button i{font-size:15px}
+.nav-links a:hover,.nav-links button:hover{color:var(--ink);background:rgba(181,103,47,.08)}
+.nav-links a.active{color:#fff9ec;background:var(--copper)}
+.nav-links button.special{border-color:var(--border-l);color:var(--copper-d)}
+.nav-links button.special:hover{background:rgba(181,103,47,.1)}
+
+.hero{position:relative;padding:60px 20px 50px;overflow:hidden;background:
+  repeating-linear-gradient(115deg,transparent 0 34px,rgba(58,36,21,.035) 35px,transparent 36px),
+  radial-gradient(ellipse at 15% 0%,rgba(201,146,47,.14),transparent 50%),
+  radial-gradient(ellipse at 90% 100%,rgba(138,50,38,.09),transparent 50%),
+  var(--paper)}
+.hero-logo{position:relative;z-index:1;max-width:600px;width:90%;margin:0 auto;text-align:center}
+.hero-logo img{width:100%;height:auto;display:block;filter:drop-shadow(0 16px 36px rgba(58,36,21,.24))}
+
+.dash{max-width:1120px;margin:6px auto 0;padding:0 20px;position:relative;z-index:2}
+.dash-card{background:linear-gradient(135deg,var(--card),var(--paper-deep));border:1px solid var(--border);border-radius:var(--rl);padding:22px 24px;box-shadow:0 20px 44px rgba(139,84,42,.14)}
+.dash-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px}
+.dash-tile{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:14px;text-align:center}
+.dash-tile i{font-size:19px;color:var(--copper-d);margin-bottom:6px;display:block}
+.dash-tile .dv{color:var(--ink);font-weight:800;font-size:17px;font-family:'Frank Ruhl Libre',serif}
+.dash-tile .dl{color:var(--muted);font-size:11px;font-weight:600;margin-top:2px}
+
+.tstrip{background:var(--paper-deep);border-bottom:1px solid var(--border);position:sticky;top:60px;z-index:99;overflow-x:auto;scrollbar-width:none}
+.tstrip::-webkit-scrollbar{display:none}
+.tstrip-in{max-width:1180px;margin:auto;padding:0 20px;display:flex}
+.ts{flex:1;min-width:120px;padding:13px 10px;text-align:center;color:var(--muted);font-size:13px;font-weight:700;border-top:3px solid transparent;text-decoration:none;transition:var(--transition)}
+.ts:hover{color:var(--ink)}
+.ts.active_sec{color:var(--copper-d);border-top-color:var(--copper);background:rgba(181,103,47,.06)}
+.ts small{display:block;font-size:11px;font-weight:400;opacity:.75;margin-top:2px}
+
+.wrap{max-width:1160px;margin:auto;padding:64px 22px}
+.sec-hdr{margin-bottom:36px;text-align:center;display:flex;flex-direction:column;align-items:center}
+.clbl{display:inline-flex;align-items:center;gap:8px;padding:7px 16px;border-radius:999px;font-size:11.5px;font-weight:800;letter-spacing:1px;text-transform:uppercase;margin-bottom:14px;background:var(--paper-deep);color:var(--copper-d);border:1px solid var(--border)}
+.sec-title{font-weight:900;font-size:clamp(28px,4.5vw,40px);letter-spacing:-1px}
+
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:var(--rl);overflow:hidden;transition:var(--transition);display:flex;flex-direction:column;box-shadow:0 10px 26px rgba(139,84,42,.08)}
+.card:hover{transform:translateY(-6px);box-shadow:0 26px 50px rgba(139,84,42,.16)}
+.cimg-w{position:relative;height:220px;overflow:hidden;background:var(--paper-deep)}
+.cimg-w img{width:100%;height:100%;object-fit:cover;filter:sepia(.28) saturate(1.08) contrast(1.03);transition:transform .6s ease}
+.card:hover .cimg-w img{transform:scale(1.06)}
+.cov{position:absolute;inset:0;background:linear-gradient(to top,rgba(58,36,21,.45) 0%,rgba(58,36,21,.06) 55%,transparent 100%);pointer-events:none}
+.dtag{position:absolute;top:16px;right:16px;background:var(--card);color:var(--ink);padding:8px 14px;border-radius:11px;font-size:13px;font-weight:800;line-height:1.25;box-shadow:0 4px 12px rgba(0,0,0,.18)}
+.dtag small{display:block;font-weight:500;font-size:10.5px;color:var(--muted)}
+.cbody{padding:24px;flex-grow:1;display:flex;flex-direction:column}
+.cbody h3{font-size:21px;margin-bottom:14px;font-weight:800;letter-spacing:-.3px}
+.acts{list-style:none;display:flex;flex-direction:column;gap:9px;margin-bottom:18px}
+.acts li{display:flex;align-items:flex-start;gap:10px;font-size:13.5px;color:var(--ink-soft);line-height:1.5}
+.dot{width:7px;height:7px;border-radius:50%;flex-shrink:0;margin-top:6px;background:var(--accent,var(--copper))}
+.hl{margin-top:auto;padding:14px 16px;background:var(--paper-deep);border-right:3px solid var(--accent,var(--copper));border-radius:0 10px 10px 0;font-size:13px;font-weight:600;color:var(--ink-soft);line-height:1.5;display:flex;gap:9px;align-items:flex-start}
+.hl i{color:var(--accent,var(--copper));font-size:18px;margin-top:1px;flex-shrink:0}
+.day-tools-row{margin-top:14px}
+.tool-chip{width:100%;display:flex;align-items:center;justify-content:center;gap:7px;background:var(--paper-deep);border:1px solid var(--border);border-radius:11px;padding:10px;font-size:12.5px;font-weight:700;color:var(--ink);cursor:pointer;font-family:inherit;transition:var(--transition)}
+.tool-chip:hover{background:rgba(181,103,47,.1);border-color:var(--border-l)}
+.tool-chip i{color:var(--copper-d)}
+
+/* in-card chooser (day 3 open slot) */
+.chooser-inline{margin-top:auto;padding-top:6px}
+.chooser-hdr-sm{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:700;color:var(--ink);margin-bottom:11px}
+.chooser-hdr-sm i{color:var(--cherry-l);font-size:16px;flex-shrink:0}
+.chooser-grid{display:flex;flex-direction:column;gap:8px;margin-bottom:10px}
+.chip-card{display:flex;align-items:center;gap:11px;background:var(--paper-deep);border:1.5px solid var(--border);border-radius:12px;padding:10px 12px;cursor:pointer;transition:var(--transition);position:relative;text-align:right}
+.chip-card:hover{border-color:var(--border-l)}
+.chip-card.chosen{border-color:var(--copper);background:linear-gradient(160deg,rgba(181,103,47,.12),var(--paper-deep))}
+.chip-card .ci{width:34px;height:34px;border-radius:50%;background:var(--card);display:flex;align-items:center;justify-content:center;font-size:15px;color:var(--copper-d);flex-shrink:0;transition:var(--transition)}
+.chip-card.chosen .ci{background:var(--copper);color:#fff8ec}
+.chip-card .ctext{flex:1;min-width:0}
+.chip-card .ct{font-weight:800;color:var(--ink);font-size:13px}
+.chip-card .cd{font-size:11px;color:var(--muted);line-height:1.4;margin-top:1px}
+.chip-card .cmark{position:absolute;top:7px;left:7px;width:17px;height:17px;border-radius:50%;background:var(--copper);color:#fff8ec;display:none;align-items:center;justify-content:center;font-size:9.5px}
+.chip-card.chosen .cmark{display:flex}
+.chooser-note{font-size:11.5px;color:var(--muted);text-align:center}
+
+footer{background:var(--paper-deep);border-top:1px solid var(--border);padding:40px 24px;text-align:center;color:var(--muted);font-size:13.5px;line-height:2}
+footer .fbrand{color:var(--copper-d);font-weight:700;font-family:'Frank Ruhl Libre',serif;font-size:15px}
+
+.toast{position:fixed;bottom:22px;right:22px;background:var(--ink);color:var(--paper);padding:13px 19px;border-radius:12px;font-size:13.5px;font-weight:600;box-shadow:0 10px 28px rgba(0,0,0,.28);display:flex;align-items:center;gap:9px;opacity:0;transform:translateY(10px);transition:all .35s cubic-bezier(.22,1,.36,1);pointer-events:none;z-index:9998;max-width:270px}
+.toast.show{opacity:1;transform:translateY(0)}
+.toast i{color:var(--amber-l);font-size:17px;flex-shrink:0}
+
+.popup-overlay{position:fixed;inset:0;z-index:2000;background:rgba(58,36,21,.55);backdrop-filter:blur(5px);display:flex;align-items:center;justify-content:center;padding:16px;opacity:0;pointer-events:none;transition:opacity .3s ease}
+.popup-overlay.open{opacity:1;pointer-events:auto}
+.popup-box{background:var(--card);border:1px solid var(--border-l);border-radius:20px;width:100%;max-width:520px;max-height:88vh;overflow-y:auto;box-shadow:0 30px 70px rgba(58,36,21,.3);transform:translateY(16px) scale(.97);transition:transform .3s cubic-bezier(.22,1,.36,1)}
+.popup-overlay.open .popup-box{transform:translateY(0) scale(1)}
+.popup-header{position:sticky;top:0;display:flex;align-items:center;justify-content:space-between;padding:18px 22px 14px;background:var(--card);border-bottom:1px solid var(--border);border-radius:20px 20px 0 0}
+.popup-header h2{font-size:19px;display:flex;align-items:center;gap:9px}
+.popup-header h2 i{color:var(--copper-d)}
+.popup-close{width:34px;height:34px;border-radius:50%;background:var(--paper-deep);border:1px solid var(--border);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:18px;color:var(--muted);transition:var(--transition)}
+.popup-close:hover{color:var(--ink);border-color:var(--border-l)}
+.popup-body{padding:18px 22px 22px}
+
+.map-frame-wrap{border-radius:14px;overflow:hidden;border:1px solid var(--border);height:300px;margin-bottom:12px;background:var(--paper-deep)}
+.map-frame-wrap iframe{width:100%;height:100%;border:0}
+.map-open-link{display:flex;align-items:center;justify-content:center;gap:8px;background:var(--copper);color:#fff8ec;text-decoration:none;padding:12px;border-radius:12px;font-weight:800;font-size:13.5px}
+
+/* floating logo — no frame, no background, just the mark itself */
+.logo-float{position:fixed;bottom:22px;left:22px;z-index:150;width:160px;pointer-events:none}
+.logo-float img{width:100%;height:auto;display:block;filter:drop-shadow(0 8px 16px rgba(58,36,21,.28))}
+
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s cubic-bezier(.22,1,.36,1)}
+.reveal.visible{opacity:1;transform:translateY(0)}
+@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
+
+@media(max-width:900px){
+  .grid{grid-template-columns:1fr}
 }
-body::before{
-  content:"";position:fixed;inset:0;pointer-events:none;opacity:.18;z-index:-1;
-  background-image:radial-gradient(circle at 1px 1px,rgba(111,53,35,.25) 1px,transparent 0);
-  background-size:24px 24px;
-}
-img{display:block;max-width:100%}
-a{color:inherit;text-decoration:none}
-.progress{position:fixed;top:0;right:0;left:0;height:4px;z-index:999}
-.progress span{
-  display:block;width:0;height:100%;
-  background:linear-gradient(90deg,var(--mahogany),var(--amber),var(--amber-light));
-  box-shadow:0 0 16px rgba(215,139,37,.55)
-}
-.hero{
-  position:relative;min-height:100svh;display:grid;place-items:center;
-  padding:34px 20px 70px;overflow:hidden;isolation:isolate
-}
-.hero::before{
-  content:"";position:absolute;inset:0;z-index:-3;
-  background:
-    linear-gradient(180deg,rgba(255,248,239,.16),rgba(255,248,239,.72) 64%,var(--cream) 100%),
-    url("1.jpg") center/cover no-repeat;
-  filter:saturate(.86) sepia(.08);transform:scale(1.02)
-}
-.hero::after{
-  content:"";position:absolute;inset:auto -10% 0;height:34%;z-index:-2;
-  background:linear-gradient(180deg,transparent,var(--cream))
-}
-.hero-glow{
-  position:absolute;width:min(850px,90vw);height:min(620px,75vh);border-radius:50%;
-  background:radial-gradient(circle,rgba(255,231,185,.9),rgba(255,231,185,.42) 40%,transparent 72%);
-  filter:blur(32px);z-index:-1
-}
-.hero-inner{width:min(1100px,100%);text-align:center;margin:auto}
-.logo-shell{display:grid;place-items:center;margin:0 auto 22px;min-height:290px}
-.hero-logo{
-  width:min(980px,94vw);max-height:58vh;object-fit:contain;margin:0 auto;
-  filter:drop-shadow(0 24px 34px rgba(97,50,25,.22));
-  animation:floatLogo 5.5s ease-in-out infinite
-}
-@keyframes floatLogo{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
-.trip-summary{
-  width:min(850px,100%);margin:10px auto 0;display:grid;grid-template-columns:repeat(3,1fr);
-  gap:12px;padding:12px;border:1px solid rgba(255,255,255,.82);border-radius:24px;
-  background:rgba(255,253,249,.78);backdrop-filter:blur(16px);
-  box-shadow:var(--shadow)
-}
-.summary-item{padding:14px 10px;border-left:1px solid var(--line)}
-.summary-item:last-child{border-left:0}
-.summary-item span{display:block;margin-bottom:3px;color:var(--muted);font-size:.83rem;font-weight:600}
-.summary-item strong{color:var(--mahogany);font-size:1rem;font-weight:800}
-.countdown-block{width:min(850px,100%);margin:28px auto 0}
-.eyebrow{
-  display:inline-flex;align-items:center;gap:10px;color:var(--mahogany-soft);
-  font-weight:800;letter-spacing:.04em
-}
-.eyebrow::before,.eyebrow::after{content:"";width:34px;height:1px;background:var(--gold)}
-.countdown{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:14px;direction:ltr}
-.count-box{
-  padding:18px 10px;border-radius:20px;border:1px solid rgba(255,255,255,.86);
-  background:rgba(255,253,249,.8);box-shadow:0 14px 32px rgba(83,46,25,.09);
-  backdrop-filter:blur(14px)
-}
-.count-box strong{
-  display:block;color:var(--mahogany);
-  font:900 clamp(1.8rem,4vw,2.7rem)/1 "Frank Ruhl Libre",serif
-}
-.count-box span{display:block;margin-top:5px;color:var(--muted);font-size:.82rem;font-weight:700}
-.hero-actions{margin-top:24px;display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
-.btn{
-  min-height:52px;padding:0 27px;border-radius:999px;display:inline-flex;
-  align-items:center;justify-content:center;gap:8px;font-weight:800;transition:.25s ease
-}
-.btn-primary{
-  color:#fff;background:linear-gradient(135deg,var(--mahogany),var(--amber));
-  box-shadow:0 15px 30px rgba(111,53,35,.28)
-}
-.btn-primary:hover{transform:translateY(-3px);box-shadow:0 20px 42px rgba(111,53,35,.35)}
-.btn-secondary{
-  color:var(--mahogany);border:1px solid var(--line);
-  background:rgba(255,253,249,.84);box-shadow:0 10px 24px rgba(83,46,25,.08)
-}
-.stage-note{
-  width:min(850px,calc(100% - 32px));margin:0 auto 70px;padding:26px;
-  border-radius:var(--radius);background:rgba(255,253,249,.9);
-  border:1px solid var(--line);box-shadow:var(--shadow);text-align:center
-}
-.stage-note h2{
-  margin:0 0 8px;color:var(--mahogany);
-  font:900 2rem/1.15 "Frank Ruhl Libre",serif
-}
-.stage-note p{margin:0;color:var(--muted)}
-.reveal{opacity:0;transform:translateY(24px);transition:.7s ease}
-.reveal.in{opacity:1;transform:none}
-@media(max-width:700px){
-  .hero{min-height:auto;padding:18px 14px 52px}
-  .logo-shell{min-height:220px;margin-bottom:12px}
-  .hero-logo{width:min(700px,100%);max-height:46vh}
-  .trip-summary{grid-template-columns:1fr;padding:10px}
-  .summary-item{border-left:0;border-bottom:1px solid var(--line);padding:12px 8px}
-  .summary-item:last-child{border-bottom:0}
-  .countdown{gap:8px}
-  .count-box{padding:14px 5px;border-radius:16px}
-  .count-box strong{font-size:1.65rem}
-  .hero-actions{display:grid;grid-template-columns:1fr}
-  .btn{width:100%}
-}
-@media(prefers-reduced-motion:reduce){
-  *,*::before,*::after{animation:none!important;transition:none!important}
-  html{scroll-behavior:auto}
+@media(max-width:760px){
+  .nav-in{height:auto;padding:10px 14px;flex-direction:column;gap:8px}
+  .nav-links{width:100%;justify-content:flex-start}
+  .tstrip{top:96px}
+  .ts{min-width:100px;font-size:12px}
+  .hero{padding:36px 14px 30px}
+  .dash-card{padding:18px}
+  .wrap{padding:46px 16px}
+  .cbody{padding:20px}
+  .toast{right:14px;left:14px;max-width:none}
+  .logo-float{bottom:14px;left:14px;width:104px}
 }
 </style>
 </head>
 <body>
-<div class="progress" aria-hidden="true"><span id="progressBar"></span></div>
 
-<header class="hero" id="top">
-  <div class="hero-glow" aria-hidden="true"></div>
-  <div class="hero-inner">
-    <div class="logo-shell">
-      <img src="logo2.png" class="hero-logo" alt="הגברים של מרינה - פראג 2026">
+<div class="toast" id="toast" role="status" aria-live="polite"><i class="ph ph-check-circle"></i><span id="toast-msg"></span></div>
+<div id="pb"></div>
+
+<div class="logo-float">
+  <img src="logo.png" alt="הגברים של מרינה — פראג 2026" onerror="this.parentElement.style.display='none'">
+</div>
+
+<nav class="nav">
+  <div class="nav-in">
+    <a href="#" class="nav-brand"><span class="stamp"><i class="ph ph-beer-stein"></i></span><span>הגברים של מרינה · פראג 2026</span></a>
+    <div class="nav-links">
+      <a href="#day1">יום 1</a>
+      <a href="#day2">יום 2</a>
+      <a href="#day3">יום 3</a>
+      <button class="special" onclick="openMapFor('hotel')"><i class="ph ph-map-trifold"></i> מפה</button>
     </div>
+  </div>
+</nav>
 
-    <section class="trip-summary reveal" aria-label="פרטי הטיול">
-      <div class="summary-item"><span>📍 יעד</span><strong>פראג, צ'כיה</strong></div>
-      <div class="summary-item"><span>🏨 מלון</span><strong>Hilton Old Town</strong></div>
-      <div class="summary-item"><span>📅 תאריכים</span><strong>30.10–01.11.2026</strong></div>
-    </section>
-
-    <section class="countdown-block reveal" aria-label="ספירה לאחור לטיול">
-      <div class="eyebrow">הטיול מתחיל בעוד</div>
-      <div class="countdown">
-        <div class="count-box"><strong id="days">0</strong><span>ימים</span></div>
-        <div class="count-box"><strong id="hours">0</strong><span>שעות</span></div>
-        <div class="count-box"><strong id="mins">0</strong><span>דקות</span></div>
-        <div class="count-box"><strong id="secs">0</strong><span>שניות</span></div>
-      </div>
-    </section>
-
-    <div class="hero-actions reveal">
-      <a href="#next-stage" class="btn btn-primary">🍺 יאללה מתחילים</a>
-      <a href="#top" class="btn btn-secondary">פראג 2026</a>
-    </div>
+<header class="hero">
+  <div class="hero-logo reveal visible">
+    <img src="logo.png" alt="הגברים של מרינה — פראג 2026" onerror="this.style.display='none'">
   </div>
 </header>
 
-<main>
-  <section class="stage-note reveal" id="next-stage">
-    <h2>שלב 1 מוכן</h2>
-    <p>בשלב הבא נוסיף את שלושת כרטיסי הימים עם 1.jpg, 2.jpg ו־3.jpg.</p>
-  </section>
-</main>
+<div class="dash reveal">
+  <div class="dash-card">
+    <div class="dash-grid">
+      <div class="dash-tile"><i class="ph ph-thermometer-simple"></i><div class="dv" id="dashWeather">--°</div><div class="dl">פראג עכשיו</div></div>
+      <div class="dash-tile"><i class="ph ph-hourglass-medium"></i><div class="dv" id="dashCountdown">--</div><div class="dl" id="dashCountdownLbl">עד ההמראה</div></div>
+      <div class="dash-tile"><i class="ph ph-bed"></i><div class="dv" style="font-size:14px">Old Town</div><div class="dl">Hilton Prague</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="tstrip">
+  <div class="tstrip-in">
+    <a href="#day1" class="ts active_sec">יום 1<small>שישי 30.10</small></a>
+    <a href="#day2" class="ts">יום 2<small>שבת 31.10</small></a>
+    <a href="#day3" class="ts">יום 3<small>ראשון 01.11</small></a>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <div class="sec-hdr reveal">
+      <div class="clbl"><i class="ph ph-calendar"></i> 3 ימים בפראג</div>
+      <h2 class="sec-title">הלו"ז</h2>
+    </div>
+
+    <div class="grid">
+
+      <!-- ══ DAY 1 ══ -->
+      <article class="card reveal" id="day1" style="--accent:var(--copper)">
+        <div class="cimg-w">
+          <img src="1.jpg" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1559925393-8be0ec4767c8?auto=format&fit=crop&w=900&q=80'" alt="יום 1 – העיר העתיקה" loading="lazy">
+          <div class="cov"></div>
+          <div class="dtag">יום 1<small>שישי · 30.10</small></div>
+        </div>
+        <div class="cbody">
+          <h3>העיר העתיקה</h3>
+          <ul class="acts">
+            <li><span class="dot"></span>נחיתה 08:35 ונסיעה למרכז העיר</li>
+            <li><span class="dot"></span>העיר העתיקה — כיכר, השעון האסטרונומי, הסמטאות</li>
+            <li><span class="dot"></span>גשר קארל — טיול רגלי ותצפיות</li>
+            <li><span class="dot"></span>הרובע היהודי — בתי הכנסת, בית הקברות, הסמטאות</li>
+            <li><span class="dot"></span>צ'ק אין ב-Hilton Prague Old Town</li>
+            <li><span class="dot"></span>ארוחת ערב — סטייק</li>
+            <li><span class="dot"></span>ערב — קזינו / ברים</li>
+          </ul>
+          <div class="hl"><i class="ph ph-bed"></i> צ'ק אין ב-Hilton Prague Old Town, במרחק הליכה מכל אתרי היום.</div>
+          <div class="day-tools-row">
+            <button class="tool-chip" onclick="openMapFor('hotel')"><i class="ph ph-map-trifold"></i> מפה למלון</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- ══ DAY 2 ══ -->
+      <article class="card reveal" id="day2" style="--accent:var(--amber-d)">
+        <div class="cimg-w">
+          <img src="2.jpg" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1565120130276-dfbd9a7a3ad7?auto=format&fit=crop&w=900&q=80'" alt="יום 2 – שוק ובירה" loading="lazy">
+          <div class="cov"></div>
+          <div class="dtag">יום 2<small>שבת · 31.10</small></div>
+        </div>
+        <div class="cbody">
+          <h3>שוק, בירה ומועדון</h3>
+          <ul class="acts">
+            <li><span class="dot"></span>בוקר רגוע</li>
+            <li><span class="dot"></span>קניות</li>
+            <li><span class="dot"></span>שוק שבת — שוק בירה מקומי בעיר</li>
+            <li><span class="dot"></span>ארוחת ערב</li>
+            <li><span class="dot"></span>ערב — LEVELS, יציאה למועדון</li>
+          </ul>
+          <div class="hl"><i class="ph ph-music-notes"></i> LEVELS Prague — אחד ממועדוני הלילה המוכרים בעיר, פתוח עד השעות הקטנות.</div>
+          <div class="day-tools-row">
+            <button class="tool-chip" onclick="openMapFor('levels')"><i class="ph ph-map-trifold"></i> מפה ל-LEVELS</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- ══ DAY 3 ══ -->
+      <article class="card reveal" id="day3" style="--accent:var(--cherry)">
+        <div class="cimg-w">
+          <img src="3.jpg" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1546182990-dffeafbe841d?auto=format&fit=crop&w=900&q=80'" alt="יום 3 – זמן חופשי וחזרה" loading="lazy">
+          <div class="cov"></div>
+          <div class="dtag">יום 3<small>ראשון · 01.11</small></div>
+        </div>
+        <div class="cbody">
+          <h3>זמן חופשי וחזרה</h3>
+          <ul class="acts">
+            <li><span class="dot"></span>ארוחת בוקר</li>
+            <li><span class="dot"></span>צ'ק אאוט</li>
+            <li><span class="dot"></span>זמן חופשי — הבחירה למטה 👇</li>
+            <li><span class="dot"></span>בירה אחרונה</li>
+            <li><span class="dot"></span>נסיעה לשדה התעופה</li>
+          </ul>
+          <div class="chooser-inline">
+            <div class="chooser-hdr-sm"><i class="ph ph-question"></i> הזמן הפתוח — תבחרו כשתגיעו</div>
+            <div class="chooser-grid" id="chooserGrid"></div>
+            <div class="chooser-note" id="chooserNote"></div>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="fbrand">הגברים של מרינה</div>
+  פראג · 30.10 – 01.11.2026
+</footer>
+
+<!-- ══ MAP POPUP ══ -->
+<div class="popup-overlay" id="mapPopup" role="dialog" aria-modal="true" aria-labelledby="mapPopupTitle">
+  <div class="popup-box">
+    <div class="popup-header">
+      <h2 id="mapPopupTitle"><i class="ph ph-map-trifold"></i> מפה</h2>
+      <button class="popup-close" aria-label="סגירה" onclick="closePopup('mapPopup')"><i class="ph ph-x"></i></button>
+    </div>
+    <div class="popup-body">
+      <div class="map-frame-wrap"><iframe id="mapFrame" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="מפה"></iframe></div>
+      <a class="map-open-link" id="mapOpenLink" href="#" target="_blank" rel="noopener"><i class="ph ph-arrow-square-out"></i> פתחו ב-Google Maps</a>
+    </div>
+  </div>
+</div>
 
 <script>
-const progressBar=document.getElementById("progressBar");
-function updateProgress(){
-  const page=document.documentElement;
-  const maxScroll=page.scrollHeight-page.clientHeight;
-  progressBar.style.width=(maxScroll>0?(window.scrollY/maxScroll)*100:0)+"%";
+/* ═══ CHOOSER (day 3 open slot) ═══ */
+const CHOICES = [
+  {id:'spa', icon:'ph-drop', title:'Beer Spa', desc:'אמבטיית בירה, זמן רגוע לפני הטיסה'},
+  {id:'castle', icon:'ph-castle-turret', title:'מצודת פראג', desc:'התצפית והרובע ההיסטורי מעל העיר'},
+  {id:'derby', icon:'ph-soccer-ball', title:'דרבי פראג', desc:'משחק כדורגל, אם התאריכים מסתדרים'}
+];
+const CK = 'prague2026_day3_choice';
+function loadChoice(){ try{ return localStorage.getItem(CK)||''; }catch(e){ return ''; } }
+function saveChoice(v){ try{ localStorage.setItem(CK, v); }catch(e){} }
+function renderChooser(){
+  const chosen = loadChoice();
+  document.getElementById('chooserGrid').innerHTML = CHOICES.map(c=>`
+    <div class="chip-card ${chosen===c.id?'chosen':''}" onclick="pickChoice('${c.id}')" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();pickChoice('${c.id}')}">
+      <div class="cmark"><i class="ph ph-check"></i></div>
+      <div class="ci"><i class="ph ${c.icon}"></i></div>
+      <div class="ctext"><div class="ct">${c.title}</div><div class="cd">${c.desc}</div></div>
+    </div>`).join('');
+  const note = document.getElementById('chooserNote');
+  note.textContent = chosen ? `הבחירה הנוכחית: ${CHOICES.find(c=>c.id===chosen).title} — אפשר לשנות בכל רגע.` : 'עדיין לא סומנה בחירה.';
 }
-window.addEventListener("scroll",updateProgress,{passive:true});
-updateProgress();
+function pickChoice(id){
+  const cur = loadChoice();
+  const next = cur===id ? '' : id;
+  saveChoice(next);
+  renderChooser();
+  if(next) showToast(`✓ סומן: ${CHOICES.find(c=>c.id===next).title}`);
+}
+renderChooser();
 
-const revealItems=document.querySelectorAll(".reveal");
-if("IntersectionObserver" in window){
-  const observer=new IntersectionObserver(entries=>{
-    entries.forEach(entry=>{
-      if(entry.isIntersecting){
-        entry.target.classList.add("in");
-        observer.unobserve(entry.target);
-      }
-    });
-  },{threshold:.12});
-  revealItems.forEach(item=>observer.observe(item));
-}else{
-  revealItems.forEach(item=>item.classList.add("in"));
+/* ═══ TOAST ═══ */
+let toastT;
+function showToast(msg){
+  const t=document.getElementById('toast');
+  document.getElementById('toast-msg').textContent=msg;
+  t.classList.add('show');
+  clearTimeout(toastT);
+  toastT=setTimeout(()=>t.classList.remove('show'),2800);
 }
 
-const targetDate=new Date("2026-10-30T08:35:00+01:00").getTime();
-const daysEl=document.getElementById("days");
-const hoursEl=document.getElementById("hours");
-const minsEl=document.getElementById("mins");
-const secsEl=document.getElementById("secs");
+/* ═══ POPUPS ═══ */
+let lastFocusedEl=null;
+function openPopup(id){
+  lastFocusedEl=document.activeElement;
+  const el=document.getElementById(id);
+  el.classList.add('open');
+  document.body.style.overflow='hidden';
+  const cb=el.querySelector('.popup-close');
+  if(cb) cb.focus();
+}
+function closePopup(id){
+  document.getElementById(id).classList.remove('open');
+  document.body.style.overflow='';
+  if(lastFocusedEl && typeof lastFocusedEl.focus==='function') lastFocusedEl.focus();
+}
+document.querySelectorAll('.popup-overlay').forEach(el=>{
+  el.addEventListener('click', e=>{ if(e.target===el) closePopup(el.id); });
+});
+document.addEventListener('keydown', e=>{
+  if(e.key==='Escape') document.querySelectorAll('.popup-overlay.open').forEach(el=>closePopup(el.id));
+});
 
+/* ═══ MAP ═══ */
+const MAP_QUERIES = {
+  hotel:'Hilton Prague Old Town',
+  steak:'best steak restaurant Old Town Prague',
+  levels:'LEVELS Prague nightclub'
+};
+function openMapFor(key){
+  const q=encodeURIComponent(MAP_QUERIES[key]||MAP_QUERIES.hotel);
+  document.getElementById('mapFrame').src=`https://www.google.com/maps?q=${q}&output=embed`;
+  document.getElementById('mapOpenLink').href=`https://www.google.com/maps/search/?api=1&query=${q}`;
+  openPopup('mapPopup');
+}
+
+/* ═══ DASHBOARD: weather / countdown to takeoff ═══ */
+async function fetchDashWeather(){
+  try{
+    const controller=new AbortController();
+    const timeout=setTimeout(()=>controller.abort(),6000);
+    const r=await fetch('https://api.open-meteo.com/v1/forecast?latitude=50.0755&longitude=14.4378&current=temperature_2m',{signal:controller.signal});
+    clearTimeout(timeout);
+    if(!r.ok) throw new Error('bad response');
+    const d=await r.json();
+    document.getElementById('dashWeather').textContent=Math.round(d.current.temperature_2m)+'°';
+  }catch(e){ document.getElementById('dashWeather').textContent='—'; }
+}
+/* Departure from Israel, 05:20 local time on 30.10.2026 (IST, UTC+2 — clocks are back to winter time by then) */
+const DEPARTURE=new Date('2026-10-30T05:20:00+02:00');
+const TRIP_END=new Date('2026-11-01T20:00:00+01:00');
 function updateCountdown(){
-  const distance=targetDate-Date.now();
-  if(distance<=0){
-    daysEl.textContent=hoursEl.textContent=minsEl.textContent=secsEl.textContent="0";
-    return;
+  const now=new Date();
+  const el=document.getElementById('dashCountdown');
+  const lbl=document.getElementById('dashCountdownLbl');
+  if(now<DEPARTURE){
+    const diff=DEPARTURE-now;
+    const d=Math.floor(diff/86400000);
+    const h=Math.floor((diff%86400000)/3600000);
+    if(d>0){ el.textContent=d+' ימים'; }
+    else{ el.textContent=h+' שעות'; }
+    lbl.textContent='עד ההמראה';
+  }else if(now<=TRIP_END){
+    el.textContent='🍺';
+    lbl.textContent='בטיול!';
+  }else{
+    el.textContent='✓';
+    lbl.textContent='הטיול הסתיים';
   }
-  daysEl.textContent=Math.floor(distance/86400000);
-  hoursEl.textContent=Math.floor((distance%86400000)/3600000);
-  minsEl.textContent=Math.floor((distance%3600000)/60000);
-  secsEl.textContent=Math.floor((distance%60000)/1000);
 }
+
+/* ═══ SCROLL / NAV ═══ */
+const pb=document.getElementById('pb');
+window.addEventListener('scroll',()=>{
+  const h=document.documentElement;
+  pb.style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight))*100+'%';
+},{passive:true});
+
+const revObs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');}),{threshold:.1});
+document.querySelectorAll('.reveal').forEach(el=>revObs.observe(el));
+
+const dayOrder=['day1','day2','day3'];
+const stripLinks=document.querySelectorAll('.ts');
+const navLinks=document.querySelectorAll('.nav-links a');
+let scrollTicking=false;
+function updateActive(){
+  let cur=dayOrder[0];
+  dayOrder.forEach(id=>{ const el=document.getElementById(id); if(el&&window.scrollY>=el.offsetTop-160) cur=id; });
+  stripLinks.forEach(a=>a.classList.toggle('active_sec',a.getAttribute('href')==='#'+cur));
+  navLinks.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+cur));
+}
+window.addEventListener('scroll',()=>{
+  if(!scrollTicking){ window.requestAnimationFrame(()=>{updateActive();scrollTicking=false;}); scrollTicking=true; }
+},{passive:true});
+updateActive();
+
+/* INIT */
+fetchDashWeather();
 updateCountdown();
-setInterval(updateCountdown,1000);
+setInterval(updateCountdown,60000);
 </script>
 </body>
 </html>
