@@ -1,0 +1,1074 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>PRAGUE 2026 — Pre-Flight Questionnaire</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#F7F6F3;
+    --card:#FFFFFF;
+    --red:#E74C3C;
+    --red-dark:#C0392B;
+    --cream:#FEFBF5;
+    --text:#25272B;
+    --text-secondary:#777777;
+    --border:#E5E5E5;
+  }
+
+  *{box-sizing:border-box; margin:0; padding:0;}
+
+  html,body{
+    min-height:100%;
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Rubik','Inter',sans-serif;
+    -webkit-tap-highlight-color:transparent;
+  }
+
+  body{
+    position:relative;
+    display:flex;
+    justify-content:center;
+    padding:24px 16px 48px;
+    overflow-x:hidden;
+  }
+
+  body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    background-image:url('https://images.unsplash.com/photo-1541849546-216549ae216d?auto=format&fit=crop&w=1800&q=80');
+    background-size:cover;
+    background-position:center;
+    filter:blur(4px);
+    opacity:0.16;
+    z-index:-2;
+  }
+  body::after{
+    content:"";
+    position:fixed;
+    inset:0;
+    background:var(--bg);
+    opacity:0.55;
+    z-index:-1;
+  }
+
+  button{ font-family:inherit; cursor:pointer; }
+  input{ font-family:inherit; }
+  a{ color:inherit; }
+
+  .en{ font-family:'Inter','Rubik',sans-serif; }
+
+  /* ---------- shell ---------- */
+  .wrap{
+    width:100%;
+    max-width:1000px;
+  }
+
+  .card{
+    background:var(--card);
+    border-radius:20px;
+    box-shadow:0 20px 60px rgba(0,0,0,0.12);
+    padding:32px 28px;
+    position:relative;
+    overflow:hidden;
+  }
+  @media (min-width:720px){
+    .card{ padding:44px 56px; }
+  }
+
+  /* ---------- header ---------- */
+  .site-header{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:16px;
+    margin-bottom:28px;
+    padding-bottom:22px;
+    border-bottom:1px solid var(--border);
+  }
+
+  .stamp{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    width:64px;
+    height:64px;
+    border:2px solid var(--red);
+    border-radius:10px;
+    color:var(--red);
+    transform:rotate(-6deg);
+    flex:0 0 auto;
+  }
+  .stamp .code{ font-family:'Inter',sans-serif; font-weight:800; font-size:15px; letter-spacing:1px; }
+  .stamp .city{ font-family:'Inter',sans-serif; font-weight:600; font-size:8px; letter-spacing:1.5px; margin-top:2px; }
+  .stamp .plane{ font-size:11px; margin-top:2px; }
+
+  .header-center{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    text-align:center;
+    flex:1;
+  }
+  .header-center .plane-icon{ font-size:20px; margin-bottom:4px; }
+  .header-center h1{
+    font-family:'Inter',sans-serif;
+    font-weight:800;
+    font-size:22px;
+    letter-spacing:2px;
+    color:var(--text);
+  }
+  .header-center .sub{
+    font-size:11px;
+    font-weight:600;
+    letter-spacing:2px;
+    color:var(--text-secondary);
+    margin-top:4px;
+    font-family:'Inter',sans-serif;
+  }
+
+  .header-right{
+    display:flex;
+    flex-direction:column;
+    align-items:flex-end;
+    gap:6px;
+    font-size:13px;
+    color:var(--text-secondary);
+    flex:0 0 auto;
+    white-space:nowrap;
+  }
+  .header-right span{ display:flex; align-items:center; gap:6px; }
+
+  @media (max-width:640px){
+    .site-header{ flex-direction:column; text-align:center; gap:10px; }
+    .header-right{ align-items:center; flex-direction:row; gap:14px; font-size:12px; }
+    .stamp{ width:52px; height:52px; }
+    .header-center h1{ font-size:18px; }
+  }
+
+  /* ---------- name screen ---------- */
+  .screen{ animation:fadeIn 0.35s ease; }
+  @keyframes fadeIn{ from{opacity:0; transform:translateY(6px);} to{opacity:1; transform:translateY(0);} }
+
+  .name-screen{ text-align:center; padding:20px 0 8px; }
+  .name-screen h2{ font-size:24px; font-weight:700; margin-bottom:6px; }
+  .name-screen .prompt{ font-size:16px; color:var(--text-secondary); margin-bottom:24px; }
+
+  .name-input{
+    width:100%;
+    max-width:340px;
+    padding:16px 18px;
+    font-size:17px;
+    border:1.5px solid var(--border);
+    border-radius:14px;
+    text-align:center;
+    outline:none;
+    transition:border-color .2s;
+    background:var(--cream);
+  }
+  .name-input:focus{ border-color:var(--red); }
+  .name-error{ color:var(--red); font-size:13px; margin-top:10px; min-height:18px; }
+
+  .btn-primary{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    background:var(--red);
+    color:#fff;
+    border:none;
+    padding:15px 34px;
+    border-radius:14px;
+    font-size:16px;
+    font-weight:700;
+    margin-top:22px;
+    transition:transform .15s, background .15s;
+    box-shadow:0 10px 24px rgba(231,76,60,0.28);
+  }
+  .btn-primary:hover{ background:var(--red-dark); transform:translateY(-1px); }
+  .btn-primary:disabled{ opacity:.5; cursor:not-allowed; transform:none; }
+  .btn-primary:active{ transform:scale(.98); }
+
+  .btn-secondary{
+    background:transparent;
+    border:1.5px solid var(--border);
+    color:var(--text);
+    padding:13px 26px;
+    border-radius:14px;
+    font-size:15px;
+    font-weight:600;
+  }
+  .btn-secondary:hover{ background:var(--cream); }
+
+  .btn-text{
+    background:none; border:none; color:var(--text-secondary);
+    font-size:13px; text-decoration:underline; padding:6px;
+  }
+
+  /* ---------- progress ---------- */
+  .progress-row{
+    display:flex; align-items:center; justify-content:space-between;
+    margin-bottom:8px; font-size:13px; color:var(--text-secondary); font-weight:600;
+  }
+  .progress-track{
+    width:100%; height:6px; background:var(--border); border-radius:6px; overflow:hidden; margin-bottom:28px;
+  }
+  .progress-fill{
+    height:100%; background:var(--red); border-radius:6px; transition:width .4s ease;
+  }
+
+  /* ---------- question ---------- */
+  .q-header{ text-align:center; margin-bottom:26px; }
+  .q-icon{ font-size:34px; margin-bottom:10px; }
+  .q-title{ font-size:21px; font-weight:700; }
+  .q-subtitle{ font-size:13.5px; color:var(--red); font-weight:600; margin-top:6px; }
+  .q-note{ font-size:12.5px; color:var(--text-secondary); margin-top:10px; }
+  .q-link{ display:inline-block; margin-top:10px; font-size:13px; color:var(--red); font-weight:600; text-decoration:underline; }
+
+  .options-grid{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:12px;
+  }
+  @media (min-width:640px){
+    .options-grid.cols-2{ grid-template-columns:1fr 1fr; }
+    .options-grid.cols-3{ grid-template-columns:1fr 1fr 1fr; }
+  }
+
+  .option-card{
+    position:relative;
+    display:flex;
+    flex-direction:column;
+    align-items:flex-start;
+    gap:4px;
+    min-height:56px;
+    text-align:right;
+    background:#fff;
+    border:1px solid var(--border);
+    border-radius:16px;
+    padding:14px 18px;
+    transition:border-color .15s, background .15s, transform .15s;
+  }
+  .option-card:hover{ background:var(--cream); }
+  .option-card:active{ transform:scale(.99); }
+  .option-card .opt-icon{ font-size:18px; }
+  .option-card .opt-title{ font-weight:700; font-size:15.5px; }
+  .option-card .opt-desc{ font-size:12.5px; color:var(--text-secondary); }
+  .option-card.selected{
+    border:2px solid var(--red);
+    background:#FFF8F6;
+    animation:pop .25s ease;
+  }
+  @keyframes pop{ 0%{transform:scale(1);} 50%{transform:scale(1.02);} 100%{transform:scale(1);} }
+  .check-badge{
+    position:absolute; top:-8px; left:-8px;
+    width:24px; height:24px; border-radius:50%;
+    background:var(--red); color:#fff;
+    display:flex; align-items:center; justify-content:center;
+    font-size:13px; font-weight:800;
+    box-shadow:0 4px 10px rgba(231,76,60,.35);
+  }
+
+  .nav-row{ display:flex; justify-content:space-between; align-items:center; margin-top:26px; }
+
+  /* ---------- summary ---------- */
+  .summary-title{ text-align:center; font-size:23px; font-weight:700; margin-bottom:4px; }
+  .summary-sub{ text-align:center; color:var(--text-secondary); font-size:14px; margin-bottom:24px; }
+  .summary-list{ display:flex; flex-direction:column; gap:10px; }
+  .summary-item{
+    display:flex; align-items:center; justify-content:space-between; gap:12px;
+    background:var(--cream); border:1px solid var(--border); border-radius:14px;
+    padding:14px 16px;
+  }
+  .summary-item .si-left{ display:flex; align-items:center; gap:10px; }
+  .summary-item .si-icon{ font-size:20px; }
+  .summary-item .si-q{ font-size:12px; color:var(--text-secondary); font-weight:600; }
+  .summary-item .si-a{ font-size:15px; font-weight:700; margin-top:2px; }
+  .summary-item .si-edit{ background:none; border:none; color:var(--red); font-size:13px; font-weight:700; white-space:nowrap; }
+
+  .submit-row{ margin-top:28px; text-align:center; }
+  .submit-btn{ width:100%; max-width:360px; justify-content:center; font-size:17px; }
+
+  /* ---------- success ---------- */
+  .success-screen{ text-align:center; padding:30px 0 10px; }
+  .success-check{
+    width:74px; height:74px; border-radius:50%; background:var(--red);
+    color:#fff; font-size:34px; display:flex; align-items:center; justify-content:center;
+    margin:0 auto 18px; box-shadow:0 14px 30px rgba(231,76,60,.3);
+    animation:pop .4s ease;
+  }
+  .success-screen h2{ font-size:23px; font-weight:700; }
+  .success-screen .thanks{ margin-top:8px; font-size:16px; color:var(--text-secondary); }
+  .success-screen .note{ margin-top:18px; font-size:14.5px; }
+  .success-screen .brand{ margin-top:26px; font-size:11px; letter-spacing:2px; color:var(--text-secondary); font-family:'Inter',sans-serif; font-weight:700; }
+  .success-plane{ display:inline-block; margin-top:10px; font-size:20px; animation:float 2.2s ease-in-out infinite; }
+  @keyframes float{ 0%,100%{ transform:translateY(0);} 50%{ transform:translateY(-6px);} }
+
+  /* ---------- modal ---------- */
+  .modal-overlay{
+    position:fixed; inset:0; background:rgba(37,39,43,0.45);
+    display:flex; align-items:center; justify-content:center; padding:20px; z-index:50;
+    animation:fadeIn .2s ease;
+  }
+  .modal-box{
+    background:#fff; border-radius:18px; padding:28px 26px; max-width:400px; width:100%;
+    text-align:center; box-shadow:0 24px 60px rgba(0,0,0,.25);
+  }
+  .modal-box h3{ font-size:18px; font-weight:700; margin-bottom:10px; }
+  .modal-box p{ font-size:14px; color:var(--text-secondary); line-height:1.6; margin-bottom:20px; }
+  .modal-actions{ display:flex; gap:10px; justify-content:center; flex-wrap:wrap; }
+
+  /* ---------- footer ---------- */
+  .site-footer{ text-align:center; margin-top:18px; font-size:12px; color:var(--text-secondary); }
+  .site-footer a{ text-decoration:underline; }
+
+  /* ---------- admin ---------- */
+  .admin-login{ text-align:center; padding:24px 0; }
+  .admin-login h2{ font-size:21px; font-weight:700; margin-bottom:18px; }
+  .pin-input{
+    width:100%; max-width:220px; padding:14px; font-size:22px; letter-spacing:8px;
+    text-align:center; border:1.5px solid var(--border); border-radius:12px; background:var(--cream); outline:none;
+  }
+  .pin-input:focus{ border-color:var(--red); }
+
+  .admin-bar{ display:flex; align-items:center; justify-content:space-between; margin-bottom:20px; flex-wrap:wrap; gap:10px; }
+  .admin-total{ font-size:14px; color:var(--text-secondary); }
+  .admin-total b{ color:var(--text); font-size:17px; }
+
+  .sub-card{
+    border:1px solid var(--border); border-radius:16px; padding:16px 18px; margin-bottom:12px; background:var(--cream);
+  }
+  .sub-card-top{ display:flex; align-items:center; justify-content:space-between; gap:10px; flex-wrap:wrap; }
+  .sub-card-top .name{ font-size:16.5px; font-weight:700; }
+  .sub-card-top .ts{ font-size:12px; color:var(--text-secondary); }
+  .sub-card-actions{ display:flex; gap:8px; margin-top:12px; flex-wrap:wrap; }
+  .sub-card-actions button{
+    border:1px solid var(--border); background:#fff; padding:8px 14px; border-radius:10px; font-size:13px; font-weight:600;
+  }
+  .sub-card-actions button.danger{ color:var(--red); border-color:#F4C6C0; }
+  .sub-card-actions button:hover{ background:var(--bg); }
+
+  .detail-list{ margin-top:12px; display:none; flex-direction:column; gap:8px; padding-top:12px; border-top:1px dashed var(--border); }
+  .detail-list.open{ display:flex; }
+  .detail-row{ display:flex; justify-content:space-between; font-size:13.5px; }
+  .detail-row .dl-a{ font-weight:700; }
+
+  .toast{
+    position:fixed; bottom:24px; left:50%; transform:translateX(-50%);
+    background:var(--text); color:#fff; padding:12px 22px; border-radius:12px; font-size:14px;
+    box-shadow:0 10px 26px rgba(0,0,0,.25); z-index:100; animation:fadeIn .2s ease;
+  }
+
+  .status-msg{ text-align:center; padding:40px 0; color:var(--text-secondary); }
+  .spinner{
+    width:26px; height:26px; border-radius:50%; border:3px solid var(--border); border-top-color:var(--red);
+    margin:0 auto 12px; animation:spin .8s linear infinite;
+  }
+  @keyframes spin{ to{ transform:rotate(360deg); } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="card">
+    <header class="site-header">
+      <div class="stamp">
+        <div class="code en">PRG</div>
+        <div class="city en">PRAGUE</div>
+        <div class="plane">✈️</div>
+      </div>
+      <div class="header-center">
+        <div class="plane-icon">✈️</div>
+        <h1 class="en">PRAGUE 2026</h1>
+        <div class="sub">PRE-FLIGHT QUESTIONNAIRE</div>
+      </div>
+      <div class="header-right">
+        <span>📅 30.10 – 01.11.2026</span>
+        <span>👥 6 נוסעים</span>
+      </div>
+    </header>
+
+    <main id="app"></main>
+  </div>
+
+  <div class="site-footer">
+    <a href="#admin" id="admin-link">ניהול</a>
+  </div>
+</div>
+
+<script>
+/* ============================================================
+   CONFIG — paste your Google Apps Script Web App URL here
+   ============================================================ */
+const CONFIG = {
+  GAS_URL: "PASTE_YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE"
+};
+
+/* ============================================================
+   DATA — questions (data-driven, no hardcoded HTML per question)
+   ============================================================ */
+const QUESTIONS = [
+  {
+    id: "airportTransport",
+    icon: "🚗",
+    title: "איך מגיעים לנתב״ג?",
+    layout: "cols-3",
+    options: [
+      { label: "נתארגן על רכבים", desc: "נתחלק ברכבים, בחניה ובדלק." },
+      { label: "הסעה מאורגנת", desc: "נארגן הסעה מאורגנת מדונה גרציה." },
+      { label: "לא משנה", desc: "אני זורם עם מה שהרוב יחליט." }
+    ]
+  },
+  {
+    id: "pragueTransfer",
+    icon: "✈️ → 🏨",
+    title: "איך מגיעים משדה התעופה בפראג למלון?",
+    layout: "cols-2",
+    options: [
+      { label: "הסעה מאורגנת", desc: "" },
+      { label: "מוניות", desc: "נזמין מוניות אחרי ההגעה לפראג." },
+      { label: "תחב״צ", desc: "ניסע בתחבורה ציבורית." },
+      { label: "לא משנה", desc: "זורם עם החלטת הרוב." }
+    ]
+  },
+  {
+    id: "ezraider",
+    icon: "🛴",
+    title: "עושים סיור EZRaider?",
+    layout: "cols-3",
+    options: [
+      { label: "כן", desc: "" },
+      { label: "לא", desc: "" },
+      { label: "זורם", desc: "" }
+    ]
+  },
+  {
+    id: "vytopna",
+    icon: "🥩 🚂",
+    title: "סטייקים במסעדת הרכבות Výtopna?",
+    layout: "cols-3",
+    link: { text: "צפה במסעדה", url: "https://share.google/WVhFJ8gvzzB1YeBI3" },
+    options: [
+      { label: "כן", desc: "" },
+      { label: "לא", desc: "" },
+      { label: "זורם", desc: "" }
+    ]
+  },
+  {
+    id: "derby",
+    icon: "⚽",
+    title: "הולכים לדרבי של פראג ב־31.10?",
+    subtitle: "במידה שנצליח להשיג כרטיסים",
+    layout: "cols-3",
+    options: [
+      { label: "כן", desc: "" },
+      { label: "לא", desc: "" },
+      { label: "זורם", desc: "" }
+    ]
+  },
+  {
+    id: "aviramSecurity",
+    icon: "🛂 😈",
+    title: "בידוק בטחוני פיזי מקיף לאבירם בנתב״ג?",
+    note: "שאלה זו מחייבת הסכמה פה אחד, חוץ מאבירם.",
+    layout: "cols-3",
+    options: [
+      { label: "כן", desc: "" },
+      { label: "ברור שכן", desc: "" },
+      { label: "תבקש גם שיתנו לנו לראות", desc: "" }
+    ]
+  }
+];
+
+/* ============================================================
+   STATE
+   ============================================================ */
+const LS_KEY = "pragueSurvey";
+
+function loadState(){
+  try{
+    const raw = localStorage.getItem(LS_KEY);
+    if(raw) return JSON.parse(raw);
+  }catch(e){}
+  return null;
+}
+
+let state = loadState() || {
+  screen: "name",       // name | question | summary | success
+  submissionId: null,
+  name: "",
+  answers: {},
+  currentQuestion: 0,
+  editingQuestion: null
+};
+
+function persist(){
+  try{ localStorage.setItem(LS_KEY, JSON.stringify(state)); }catch(e){}
+}
+
+function resetSurvey(){
+  state = { screen:"name", submissionId:null, name:"", answers:{}, currentQuestion:0, editingQuestion:null };
+  localStorage.removeItem(LS_KEY);
+}
+
+/* ============================================================
+   ADMIN STATE (kept out of the survey's localStorage blob)
+   ============================================================ */
+let admin = {
+  screen: "login",   // login | list
+  token: null,
+  submissions: [],
+  loading: false,
+  editingSubmission: null,
+  editAnswers: null,
+  openDetail: {}
+};
+
+/* ============================================================
+   API HELPERS
+   ============================================================ */
+async function callApi(payload){
+  if(!CONFIG.GAS_URL || CONFIG.GAS_URL.indexOf("PASTE_YOUR") === 0){
+    throw new Error("GAS_URL_NOT_CONFIGURED");
+  }
+  const res = await fetch(CONFIG.GAS_URL, {
+    method: "POST",
+    headers: { "Content-Type": "text/plain;charset=utf-8" },
+    body: JSON.stringify(payload)
+  });
+  if(!res.ok) throw new Error("network");
+  const data = await res.json();
+  if(!data.success) throw new Error(data.error || "unknown");
+  return data;
+}
+
+function submissionNameExists(name){
+  // Best-effort local check only if admin list happens to be cached; otherwise
+  // this is validated conversationally, not blocking — real duplicate check
+  // happens against server data pulled at submit-check time.
+  return false;
+}
+
+/* ============================================================
+   RENDER ROOT
+   ============================================================ */
+const app = document.getElementById("app");
+
+function render(){
+  persist();
+  const hash = location.hash;
+  if(hash === "#admin"){
+    renderAdmin();
+    return;
+  }
+  switch(state.screen){
+    case "name": renderName(); break;
+    case "question": renderQuestion(); break;
+    case "summary": renderSummary(); break;
+    case "success": renderSuccess(); break;
+    default: renderName();
+  }
+}
+
+window.addEventListener("hashchange", render);
+
+/* ============================================================
+   NAME SCREEN
+   ============================================================ */
+function renderName(){
+  app.innerHTML = `
+    <div class="screen name-screen">
+      <h2>לפני שמתחילים...</h2>
+      <div class="prompt">מי אתה?</div>
+      <input id="name-input" class="name-input" type="text" placeholder="הקלד שם" value="${escapeHtml(state.name)}" maxlength="40" />
+      <div class="name-error" id="name-error"></div>
+      <div>
+        <button class="btn-primary" id="start-btn">מתחילים →</button>
+      </div>
+    </div>
+  `;
+  const input = document.getElementById("name-input");
+  const btn = document.getElementById("start-btn");
+  input.focus();
+  input.addEventListener("keydown", e => { if(e.key === "Enter") btn.click(); });
+  btn.addEventListener("click", () => {
+    const val = input.value.trim();
+    if(val.length < 2){
+      document.getElementById("name-error").textContent = "השם חייב להכיל לפחות 2 תווים";
+      return;
+    }
+    state.name = val;
+    checkExistingName(val);
+  });
+}
+
+async function checkExistingName(name){
+  // Try a lightweight server check; if the API isn't reachable or configured,
+  // just proceed — this check is a courtesy, never a blocker.
+  try{
+    const data = await callApi({ action:"checkName", name });
+    if(data.exists){
+      showNameExistsModal();
+      return;
+    }
+  }catch(e){ /* silently proceed */ }
+  goToQuestion(0);
+}
+
+function showNameExistsModal(){
+  const overlay = document.createElement("div");
+  overlay.className = "modal-overlay";
+  overlay.innerHTML = `
+    <div class="modal-box">
+      <h3>כבר קיימת תשובה בשם הזה</h3>
+      <p>אפשר להמשיך וליצור הגשה נוספת, או לחזור ולשנות את השם.</p>
+      <div class="modal-actions">
+        <button class="btn-secondary" id="modal-back">חזרה</button>
+        <button class="btn-primary" id="modal-continue">המשך בכל זאת</button>
+      </div>
+    </div>
+  `;
+  document.body.appendChild(overlay);
+  document.getElementById("modal-back").addEventListener("click", () => overlay.remove());
+  document.getElementById("modal-continue").addEventListener("click", () => {
+    overlay.remove();
+    goToQuestion(0);
+  });
+}
+
+function goToQuestion(idx){
+  state.screen = "question";
+  state.currentQuestion = idx;
+  state.editingQuestion = null;
+  render();
+}
+
+/* ============================================================
+   QUESTION SCREEN
+   ============================================================ */
+function renderQuestion(){
+  const idx = state.currentQuestion;
+  const q = QUESTIONS[idx];
+  const total = QUESTIONS.length;
+  const pct = Math.round(((idx+1)/total)*100);
+  const selected = state.answers[q.id];
+  const layoutClass = q.layout || "cols-3";
+
+  app.innerHTML = `
+    <div class="screen">
+      <div class="progress-row">
+        <span>שאלה ${idx+1} מתוך ${total}</span>
+        <span class="en">${pct}%</span>
+      </div>
+      <div class="progress-track"><div class="progress-fill" style="width:${pct}%"></div></div>
+
+      <div class="q-header">
+        <div class="q-icon">${q.icon}</div>
+        <div class="q-title">${q.title}</div>
+        ${q.subtitle ? `<div class="q-subtitle">${q.subtitle}</div>` : ""}
+        ${q.link ? `<a class="q-link" href="${q.link.url}" target="_blank" rel="noopener">${q.link.text}</a>` : ""}
+        ${q.note ? `<div class="q-note">${q.note}</div>` : ""}
+      </div>
+
+      <div class="options-grid ${layoutClass}">
+        ${q.options.map((opt, i) => `
+          <button class="option-card ${selected===opt.label ? 'selected' : ''}" data-opt="${i}">
+            ${selected===opt.label ? '<span class="check-badge">✓</span>' : ''}
+            <span class="opt-title">${opt.label}</span>
+            ${opt.desc ? `<span class="opt-desc">${opt.desc}</span>` : ""}
+          </button>
+        `).join("")}
+      </div>
+
+      <div class="nav-row">
+        ${idx > 0 ? `<button class="btn-secondary" id="prev-btn">← הקודם</button>` : `<span></span>`}
+        <span></span>
+      </div>
+    </div>
+  `;
+
+  document.querySelectorAll(".option-card").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const i = parseInt(btn.dataset.opt, 10);
+      selectOption(q, i);
+    });
+  });
+  const prevBtn = document.getElementById("prev-btn");
+  if(prevBtn) prevBtn.addEventListener("click", () => {
+    state.currentQuestion = idx - 1;
+    render();
+  });
+}
+
+function selectOption(q, i){
+  state.answers[q.id] = q.options[i].label;
+  render(); // show selected state immediately
+
+  const wasEditing = state.editingQuestion !== null;
+  setTimeout(() => {
+    if(wasEditing){
+      state.screen = "summary";
+      state.editingQuestion = null;
+      render();
+      return;
+    }
+    if(state.currentQuestion < QUESTIONS.length - 1){
+      state.currentQuestion += 1;
+      render();
+    }else{
+      state.screen = "summary";
+      render();
+    }
+  }, 300);
+}
+
+/* ============================================================
+   SUMMARY SCREEN
+   ============================================================ */
+function renderSummary(){
+  app.innerHTML = `
+    <div class="screen">
+      <div class="summary-title">רגע לפני שמגישים</div>
+      <div class="summary-sub">אלה הבחירות שלך:</div>
+      <div class="summary-list">
+        ${QUESTIONS.map((q, i) => `
+          <div class="summary-item">
+            <div class="si-left">
+              <span class="si-icon">${q.icon.split(" ")[0]}</span>
+              <div>
+                <div class="si-q">${q.title}</div>
+                <div class="si-a">${state.answers[q.id] || "—"}</div>
+              </div>
+            </div>
+            <button class="si-edit" data-edit="${i}">✏️ שינוי</button>
+          </div>
+        `).join("")}
+      </div>
+      <div class="submit-row">
+        <button class="btn-primary submit-btn" id="submit-btn">✓ שולחים את הקול שלי</button>
+      </div>
+    </div>
+  `;
+  document.querySelectorAll("[data-edit]").forEach(btn => {
+    btn.addEventListener("click", () => {
+      state.editingQuestion = parseInt(btn.dataset.edit, 10);
+      state.currentQuestion = state.editingQuestion;
+      state.screen = "question";
+      render();
+    });
+  });
+  document.getElementById("submit-btn").addEventListener("click", submitSurvey);
+}
+
+async function submitSurvey(){
+  const btn = document.getElementById("submit-btn");
+  btn.disabled = true;
+  btn.textContent = "שולח...";
+
+  const submissionId = state.submissionId || (crypto.randomUUID ? crypto.randomUUID() : String(Date.now()) + Math.random());
+
+  try{
+    await callApi({
+      action: "submit",
+      submissionId,
+      name: state.name,
+      answers: state.answers
+    });
+    state.submissionId = submissionId;
+    state.screen = "success";
+    persist();
+    localStorage.removeItem(LS_KEY);
+    render();
+  }catch(e){
+    btn.disabled = false;
+    btn.textContent = "✓ שולחים את הקול שלי";
+    let msg = "משהו השתבש. נסה שוב.";
+    if(e.message === "GAS_URL_NOT_CONFIGURED"){
+      msg = "האתר עדיין לא מחובר ל-Google Sheets. יש להגדיר את GAS_URL בקובץ.";
+    }
+    showToast(msg);
+  }
+}
+
+/* ============================================================
+   SUCCESS SCREEN
+   ============================================================ */
+function renderSuccess(){
+  app.innerHTML = `
+    <div class="screen success-screen">
+      <div class="success-check">✓</div>
+      <h2>הקול שלך נקלט</h2>
+      <div class="thanks">תודה, ${escapeHtml(state.name)}</div>
+      <div class="note">עכשיו אפשר להתווכח על התוצאות בוואטסאפ.</div>
+      <div class="brand en">PRAGUE 2026</div>
+      <div class="success-plane">✈️</div>
+    </div>
+  `;
+}
+
+/* ============================================================
+   TOAST
+   ============================================================ */
+function showToast(msg){
+  const t = document.createElement("div");
+  t.className = "toast";
+  t.textContent = msg;
+  document.body.appendChild(t);
+  setTimeout(() => t.remove(), 3200);
+}
+
+function escapeHtml(str){
+  return String(str).replace(/[&<>"']/g, c => ({
+    "&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"
+  }[c]));
+}
+
+/* ============================================================
+   ADMIN
+   ============================================================ */
+function renderAdmin(){
+  if(admin.screen === "login" || !admin.token){
+    renderAdminLogin();
+  }else{
+    renderAdminList();
+  }
+}
+
+function renderAdminLogin(){
+  app.innerHTML = `
+    <div class="screen admin-login">
+      <h2>ניהול תשובות</h2>
+      <input id="pin-input" class="pin-input en" type="password" inputmode="numeric" placeholder="••••" maxlength="8" />
+      <div class="name-error" id="pin-error"></div>
+      <div><button class="btn-primary" id="pin-btn">כניסה</button></div>
+      <div style="margin-top:18px;"><a href="#" id="back-to-site" class="btn-text">חזרה לאתר</a></div>
+    </div>
+  `;
+  const input = document.getElementById("pin-input");
+  input.focus();
+  const submit = () => verifyAdminPin(input.value.trim());
+  input.addEventListener("keydown", e => { if(e.key === "Enter") submit(); });
+  document.getElementById("pin-btn").addEventListener("click", submit);
+  document.getElementById("back-to-site").addEventListener("click", (e) => {
+    e.preventDefault();
+    location.hash = "";
+    render();
+  });
+}
+
+async function verifyAdminPin(pin){
+  const errEl = document.getElementById("pin-error");
+  if(!pin){ errEl.textContent = "יש להזין PIN"; return; }
+  const btn = document.getElementById("pin-btn");
+  btn.disabled = true; btn.textContent = "בודק...";
+  try{
+    const data = await callApi({ action:"verifyAdmin", pin });
+    admin.token = data.adminToken;
+    admin.screen = "list";
+    await loadSubmissions();
+  }catch(e){
+    errEl.textContent = e.message === "GAS_URL_NOT_CONFIGURED"
+      ? "יש להגדיר תחילה את GAS_URL בקובץ."
+      : "PIN שגוי, נסה שוב.";
+    btn.disabled = false; btn.textContent = "כניסה";
+  }
+}
+
+async function loadSubmissions(){
+  admin.loading = true;
+  renderAdminList();
+  try{
+    const data = await callApi({ action:"list", adminToken: admin.token });
+    admin.submissions = data.submissions || [];
+  }catch(e){
+    showToast("משהו השתבש. נסה שוב.");
+  }
+  admin.loading = false;
+  renderAdminList();
+}
+
+function renderAdminList(){
+  if(admin.loading){
+    app.innerHTML = `<div class="status-msg"><div class="spinner"></div>טוען הגשות...</div>`;
+    return;
+  }
+
+  if(admin.editingSubmission){
+    renderAdminEdit();
+    return;
+  }
+
+  app.innerHTML = `
+    <div class="screen">
+      <div class="admin-bar">
+        <div>
+          <div class="summary-title" style="text-align:right; margin-bottom:4px;">תשובות שהוגשו</div>
+          <div class="admin-total">סה״כ הצביעו: <b>${admin.submissions.length}</b></div>
+        </div>
+        <div style="display:flex; gap:8px;">
+          <button class="btn-secondary" id="refresh-btn">רענון</button>
+          <a href="#" id="admin-back" class="btn-text">חזרה לאתר</a>
+        </div>
+      </div>
+      <div id="sub-list">
+        ${admin.submissions.length === 0 ? `<div class="status-msg">עדיין אין הגשות.</div>` : admin.submissions.map(renderSubCard).join("")}
+      </div>
+    </div>
+  `;
+
+  document.getElementById("refresh-btn").addEventListener("click", loadSubmissions);
+  document.getElementById("admin-back").addEventListener("click", (e) => {
+    e.preventDefault(); location.hash = ""; render();
+  });
+
+  admin.submissions.forEach(sub => {
+    const card = document.getElementById(`card-${sub.submissionId}`);
+    if(!card) return;
+    card.querySelector("[data-view]").addEventListener("click", () => {
+      admin.openDetail[sub.submissionId] = !admin.openDetail[sub.submissionId];
+      renderAdminList();
+    });
+    card.querySelector("[data-edit-sub]").addEventListener("click", () => {
+      admin.editingSubmission = sub.submissionId;
+      admin.editAnswers = Object.assign({}, sub.answers);
+      renderAdminList();
+    });
+    card.querySelector("[data-delete-sub]").addEventListener("click", () => {
+      confirmDelete(sub);
+    });
+  });
+}
+
+function renderSubCard(sub){
+  const open = !!admin.openDetail[sub.submissionId];
+  return `
+    <div class="sub-card" id="card-${sub.submissionId}">
+      <div class="sub-card-top">
+        <div class="name">${escapeHtml(sub.name)}</div>
+        <div class="ts en">${formatTimestamp(sub.timestamp)}</div>
+      </div>
+      <div class="sub-card-actions">
+        <button data-view="1">צפייה</button>
+        <button data-edit-sub="1">עריכה</button>
+        <button class="danger" data-delete-sub="1">מחיקה</button>
+      </div>
+      <div class="detail-list ${open ? 'open' : ''}">
+        ${QUESTIONS.map(q => `
+          <div class="detail-row">
+            <span>${q.title}</span>
+            <span class="dl-a">${(sub.answers && sub.answers[q.id]) || "—"}</span>
+          </div>
+        `).join("")}
+      </div>
+    </div>
+  `;
+}
+
+function formatTimestamp(ts){
+  if(!ts) return "";
+  try{
+    const d = new Date(ts);
+    const pad = n => String(n).padStart(2,"0");
+    return `${pad(d.getDate())}.${pad(d.getMonth()+1)}.${d.getFullYear()} ${pad(d.getHours())}:${pad(d.getMinutes())}`;
+  }catch(e){ return ts; }
+}
+
+function confirmDelete(sub){
+  const overlay = document.createElement("div");
+  overlay.className = "modal-overlay";
+  overlay.innerHTML = `
+    <div class="modal-box">
+      <h3>למחוק את התשובות של ${escapeHtml(sub.name)}?</h3>
+      <p>הפעולה תמחק את כל ההגשה ולא ניתן יהיה לשחזר אותה.</p>
+      <div class="modal-actions">
+        <button class="btn-secondary" id="cancel-del">ביטול</button>
+        <button class="btn-primary" id="confirm-del">כן, למחוק</button>
+      </div>
+    </div>
+  `;
+  document.body.appendChild(overlay);
+  document.getElementById("cancel-del").addEventListener("click", () => overlay.remove());
+  document.getElementById("confirm-del").addEventListener("click", async () => {
+    overlay.remove();
+    try{
+      await callApi({ action:"delete", adminToken: admin.token, submissionId: sub.submissionId });
+      admin.submissions = admin.submissions.filter(s => s.submissionId !== sub.submissionId);
+      showToast("✓ ההגשה נמחקה");
+      renderAdminList();
+    }catch(e){
+      showToast("משהו השתבש. נסה שוב.");
+    }
+  });
+}
+
+function renderAdminEdit(){
+  const sub = admin.submissions.find(s => s.submissionId === admin.editingSubmission);
+  if(!sub){ admin.editingSubmission = null; renderAdminList(); return; }
+
+  app.innerHTML = `
+    <div class="screen">
+      <div class="summary-title" style="text-align:right;">עריכת תשובות — ${escapeHtml(sub.name)}</div>
+      <div class="summary-list" style="margin-top:18px;">
+        ${QUESTIONS.map(q => `
+          <div>
+            <div class="si-q" style="margin-bottom:8px;">${q.icon} ${q.title}</div>
+            <div class="options-grid ${q.layout || 'cols-3'}" style="margin-bottom:18px;">
+              ${q.options.map((opt,i) => `
+                <button class="option-card ${admin.editAnswers[q.id]===opt.label ? 'selected':''}" data-eq="${q.id}" data-eopt="${i}">
+                  ${admin.editAnswers[q.id]===opt.label ? '<span class="check-badge">✓</span>' : ''}
+                  <span class="opt-title">${opt.label}</span>
+                </button>
+              `).join("")}
+            </div>
+          </div>
+        `).join("")}
+      </div>
+      <div class="nav-row">
+        <button class="btn-secondary" id="cancel-edit">ביטול</button>
+        <button class="btn-primary" id="save-edit">שמור שינויים</button>
+      </div>
+    </div>
+  `;
+
+  document.querySelectorAll("[data-eq]").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const qid = btn.dataset.eq;
+      const i = parseInt(btn.dataset.eopt, 10);
+      const q = QUESTIONS.find(x => x.id === qid);
+      admin.editAnswers[qid] = q.options[i].label;
+      renderAdminEdit();
+    });
+  });
+  document.getElementById("cancel-edit").addEventListener("click", () => {
+    admin.editingSubmission = null;
+    admin.editAnswers = null;
+    renderAdminList();
+  });
+  document.getElementById("save-edit").addEventListener("click", async () => {
+    const btn = document.getElementById("save-edit");
+    btn.disabled = true; btn.textContent = "שומר...";
+    try{
+      await callApi({ action:"update", adminToken: admin.token, submissionId: sub.submissionId, answers: admin.editAnswers });
+      sub.answers = Object.assign({}, admin.editAnswers);
+      admin.editingSubmission = null;
+      admin.editAnswers = null;
+      showToast("✓ השינויים נשמרו");
+      renderAdminList();
+    }catch(e){
+      btn.disabled = false; btn.textContent = "שמור שינויים";
+      showToast("משהו השתבש. נסה שוב.");
+    }
+  });
+}
+
+/* ============================================================
+   INIT
+   ============================================================ */
+render();
+</script>
+</body>
+</html>
